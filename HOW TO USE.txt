@@ -1,0 +1,11 @@
+how to use starter template
+
+to package.json
+- edit name
+- edit description
+
+in terminal
+- npm install
+- npm run build
+- npm run watch
+- npm run start
