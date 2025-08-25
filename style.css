@@ -1,0 +1,41 @@
+nav{
+    background-color: #1e1e22 !important;
+}
+.container-head{
+    padding: 0.5rem;
+    display: flex;
+}
+
+.content{
+    display: flex;
+    gap: 4rem;
+}
+.branding{
+    display: flex;
+    gap: 0.8rem;
+    align-items: center;
+}
+
+.brand-logo{
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.brand-name{
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.list-menu{
+    display: flex;
+    gap: 1rem;
+    align-content: center;
+    flex-wrap: wrap;
+}
+.menu{
+    text-decoration: none !important;   
+    color: #ffffff !important;
+    font-size: 1rem;
+    font-weight: bold;
+}
