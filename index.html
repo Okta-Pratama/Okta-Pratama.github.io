@@ -10,7 +10,7 @@
   <meta name="description" content="Portofolio Okta Pratama, Website Developer yang berpengalaman dalam membangun website responsif, cepat, dan fungsional menggunakan teknologi modern." />
   <meta property="og:title" content="Portofolio Okta Pratama – Website Developer" />
   <meta property="og:description" content="Kenali karya-karya terbaik Okta Pratama dalam pengembangan website, mulai dari landing page hingga sistem web yang kompleks dan profesional." />
-
+  <link rel="shortcut icon" href="img/logo.png"/>
 
 </head>
 <body>
@@ -20,8 +20,9 @@
         <div class="branding">
           <img class="brand-logo" src="img/logo.png" alt="">
           <div class="brand-name">Okta Pratama</div>
+          
         </div>
-        <div class="list-menu">
+        <div class="list-menu" id="list-menu">
           <a class="menu" href="#hero">About Me</a>
           <a class="menu" href="#job-history">Job History</a>
           <a class="menu" href="#project-history">Project History</a>
@@ -33,10 +34,10 @@
         </div>
       </div>
 
-      <div class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
+      <div class="hamburger" id="hamburger">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
       </div>
     </div>
   </nav>
@@ -44,10 +45,12 @@
   <section class="hero-section" id="hero">
     <div class="container container-hero">
       <div class="row">
-        <div class="col-lg-2 content-left">
+        <div class="col-lg-6 content-left">
           <div class="greeting">Hello! I'm <br> Okta Pratama</div>
+          <div class="bottomlinemobile">
+          </div>
         </div>
-        <div class=" col-lg-2 content-right">
+        <div class=" col-lg-6 content-right">
           <div class="title">
             <div class="job">A Website Developer based in Probolinggo, Indonesia.</div>
             <div class="description">Passionate about design and development, I specialize in creating visually appealing and user-friendly websites.</div>
@@ -62,23 +65,25 @@
 
   <section class="job-history" id="job-history">
     <div class="container container-job-history">
-      <div class="content">
-        <div class="title">Job History</div>
-        <div class="job-list">
-          <div class="job-item">
-            <div class="job-title">Front-End Developer</div>
-            <div class="job-description">Design and develop user interfaces for websites and web applications.</div>
-          </div>
-          <div class="job-item">
-            <div class="job-title">Back-End Developer</div>
-            <div class="job-description">Design and develop server-side logic for websites and web applications.</div>
-          </div>
-          <div class="job-item">
-            <div class="job-title">Full-Stack Developer</div>
-            <div class="job-description">Design and develop full-stack applications for websites and web applications.</div>
-          </div>
+      <div class="job-history-title">Job History</div>
+      <div class="row">
+        <div class="col-lg-6">
+          
         </div>
+        <div class="col-lg-6">
+
+        </div>
+
+        
       </div>
+      <div class="job-active-title">Active Job</div>
+      <div class="row">
+        <div class="col-lg-6">
+          
+        </div>
+        <div class="col-lg-6">
+
+        </div>
     </div>
   </section>
   <script src="script.js"></script>

@@ -14,3 +14,21 @@ function update_time() {
 
 update_time();
 setInterval(update_time, 1000);
+
+document.addEventListener('DOMContentLoaded', function() {
+  const hamburger = document.getElementById('hamburger');
+  const menuMobile = document.getElementById('list-menu');
+
+  hamburger.addEventListener('click', function() {
+    hamburger.classList.toggle('active');
+    menuMobile.classList.toggle('active');
+  });
+
+  // Optional: close menu when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!hamburger.contains(e.target) && !menuMobile.contains(e.target)) {
+      hamburger.classList.remove('active');
+      menuMobile.classList.remove('active');
+    }
+  });
+});
