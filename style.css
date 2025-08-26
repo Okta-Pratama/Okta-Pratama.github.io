@@ -53,6 +53,12 @@
     }
 }
 
+@media screen and (max-width: 576px) {
+    .container{
+        padding: 0 2rem !important;
+    }
+}
+
 @media (max-width: 992px) {
     .bottomlinemobile {
         border: #000000 1px solid;
@@ -204,7 +210,68 @@
 }
 
 /* -------- Job History --------- */
-.job-history {
+.jobs-history {
     padding: 4rem 0;
-    background-color: #e8e8e87e;
+}
+
+.jobs-history .container-jobs-history {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.jobs-history .title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #222222;
+    display: flex;
+    align-items: center;
+}
+.jobs-history .title .text {
+    margin-right: 1rem;
+}
+.jobs-history .title .decoration {
+    height: 0.25rem;
+    background: #000000;
+    border-radius: 2px;
+    flex-grow: 1;
+}
+
+
+.jobs-history .jobs-left {
+    padding: 2rem;
+}
+.jobs-history .jobs-left img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 2rem 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.jobs-history .jobs-right {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.jobs-history .jobs-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #222222;
+}
+
+.jobs-history .jobs-company {
+    font-size: 1rem;
+    color: #555555;
+}
+
+.jobs-history .jobs-time {
+    font-size: 0.8rem;
+    color: #555555;
+}
+
+.jobs-history .jobs-description {
+    font-size: 0.8rem;
+    color: #555555;
 }
