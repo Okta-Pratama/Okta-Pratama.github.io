@@ -56,7 +56,7 @@
 @media (max-width: 992px) {
     .bottomlinemobile {
         border: #000000 1px solid;
-        width: 31%;
+        width: 30%;
     }
     .navbar .list-menu {
         position: fixed;
