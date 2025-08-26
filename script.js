@@ -24,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function() {
     menuMobile.classList.toggle('active');
   });
 
-  // Optional: close menu when clicking outside
   document.addEventListener('click', function(e) {
     if (!hamburger.contains(e.target) && !menuMobile.contains(e.target)) {
       hamburger.classList.remove('active');
