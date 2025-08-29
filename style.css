@@ -425,6 +425,48 @@
     padding: 2rem;
     border-radius: 1rem;
 }
+
+.footer .formulir {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    max-width: 500px;
+    flex-direction: column;
+    border-radius: 1rem;
+    align-items: flex-start;
+    box-shadow: 0px 0px 7px 4px rgba(0, 0, 0, 0.08);
+    
+}
+.footer .formulir .form{
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    flex-direction: column;
+}
+.footer .formulir .form .massage{
+    padding: 4rem 1rem !important;
+}
+.footer .formulir button {
+    padding: 0.75rem 1.5rem;
+    background-color: #555555;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    color: #ffffff;
+    cursor: pointer;
+    transition: all 0.3s linear;
+}
+.footer .formulir input {
+    flex: 1;
+    padding: 0.75rem 1rem;
+    border: 1px solid #cccccc;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    color: #555555;
+    outline: none;
+    transition: all 0.3s linear;
+}
+
 .footer .container-icons {
     display: flex;
     gap: 2rem;
