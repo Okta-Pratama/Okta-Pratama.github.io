@@ -211,6 +211,93 @@
     color: #555555;
 }
 
+/* -------- Journey --------- */
+.journey {
+    padding: 4rem 0;
+    background-color: #f5f5f5;
+}
+.journey .container-journey {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.journey .title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #222222;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.journey .title .text {
+    margin-right: 1rem;
+}
+.journey .title .decoration {
+    height: 1px;
+    border: #000000 1px solid;
+    border-radius: 1px;
+    width: 20%;
+}
+.journey .journey-card .decoration {
+    display: flex;
+    flex-direction: column;
+}
+.journey .journey-card .decoration .line:nth-child(1) {
+    width: 2rem;
+}
+.journey .journey-card .decoration .line:nth-child(2) {
+    width: 1.5rem;
+}
+.journey .journey-card .decoration .line {
+    height: 2px;
+    background: #000000;
+    border-radius: 1px;
+    margin-top: 0.3rem;
+}
+
+.journey .content-left {
+    gap: 2rem;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    @media screen and (min-width: 992px) {
+        flex-direction: row;
+    }
+}
+.journey .content-right {
+    gap: 2rem;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    @media screen and (min-width: 992px) {
+        flex-direction: row;
+    }
+}
+.journey .journey-card {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    flex: 1;
+    height: 100%;
+}
+.journey .journey-card .year {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #222222;
+}
+.journey .journey-card .name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #555555;
+}
+.journey .journey-card .description {
+    font-size: 1rem;
+    color: #555555;
+}
+.journey .column-journey{
+    padding: 1rem;
+}
 /* -------- Job History --------- */
 .jobs-history {
     padding: 4rem 0;
@@ -231,16 +318,17 @@
     font-weight: bold;
     color: #222222;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    gap: 1rem   ;
 }
 .jobs-history .title .text {
     margin-right: 1rem;
 }
 .jobs-history .title .decoration {
     height: 1px;
-    background: #000000;
+    border: #000000 1px solid;
     border-radius: 1px;
-    flex-grow: 1;
+    width: 20%;
 }
 
 .jobs-history .jobs-left {
@@ -333,10 +421,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #555555;
+    background-color: #ffffff;
     padding: 2rem;
     border-radius: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .footer .container-icons {
     display: flex;
@@ -344,18 +431,6 @@
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-}
-.footer .saweria-qr-code {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-.footer .saweria-qr-code img {
-    width: 10rem;
-    height: 10rem;
-    object-fit: cover;
-    border-radius: 1rem;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 .footer .footer-card {
     background-color: #ffffff;
@@ -365,7 +440,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 0px 7px 4px rgba(0, 0, 0, 0.08);
     transition: all 0.3s linear;
     flex-direction: column;
     text-decoration: none;
@@ -411,17 +486,4 @@
     width: 2rem;
     height: 2rem;
     object-fit: cover;
-}
-.footer .cr {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    width: 100%;
-}
-.footer .line {
-    height: 1px;
-    background: #000000;
-    border-radius: 1px;
-    width: 100%;
 }
