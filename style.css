@@ -211,6 +211,12 @@ html {
 .hero-section {
     padding: 16rem 0;
     position: relative;
+    
+    @media screen and (max-width: 992px) {
+        min-height: 100vh;
+        padding: 8rem 0 4rem;
+        position: relative;
+    }
 }
 .hero-section .hero-backgorund {
     position: absolute;

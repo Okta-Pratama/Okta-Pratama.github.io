@@ -10,7 +10,6 @@ document.addEventListener("DOMContentLoaded", () => {
   update_time();
   setInterval(update_time, 1000);
 
-  // Hamburger menu
   const hamburger = document.getElementById("hamburger");
   const listMenu = document.getElementById("list-menu");
   hamburger.addEventListener("click", () => {
