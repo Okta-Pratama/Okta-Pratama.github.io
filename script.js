@@ -61,3 +61,5 @@ document.addEventListener("DOMContentLoaded", () => {
   underline.style.left = offsetLeft + "px";
   underline.style.width = offsetWidth + "px";
 });
+
+AOS.init();
