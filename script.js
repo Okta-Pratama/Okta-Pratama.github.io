@@ -1,5 +1,4 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Jam realtime
   function update_time() {
     const now = new Date();
     const hours = String(now.getHours()).padStart(2, "0");
@@ -23,7 +22,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Smooth scroll + underline active
   const menuLinks = document.querySelectorAll(".menu");
   const underline = document.querySelector(".underline");
 
@@ -55,7 +53,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   sections.forEach(section => observer.observe(section));
 
-  // Posisi awal underline
   const firstActive = document.querySelector(".menu.active") || menuLinks[0];
   const { offsetLeft, offsetWidth } = firstActive;
   underline.style.left = offsetLeft + "px";
