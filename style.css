@@ -352,9 +352,6 @@ html {
 .jobs-history {
     padding: 4rem 0;
 }
-.jobs-history .job-r{
-    flex-direction: row-reverse;
-}
 .jobs-history .container-jobs-history {
     display: flex;
     flex-direction: column;
