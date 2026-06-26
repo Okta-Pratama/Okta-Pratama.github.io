@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Okta Pratama</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
   <meta name="keywords"
     content="Website Developer, Web Developer Indonesia, Okta Pratama, Portofolio Web Developer, Front-End Developer, Back-End Developer, Full Stack Developer" />
@@ -14,246 +15,228 @@
   <meta property="og:title" content="Portofolio Okta Pratama – Website Developer" />
   <meta property="og:description"
     content="Kenali karya-karya terbaik Okta Pratama dalam pengembangan website, mulai dari landing page hingga sistem web yang kompleks dan profesional." />
-  <link rel="shortcut icon" href="img/logo.png"/>
+  <link rel="shortcut icon" href="img/OP.png"/>
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 </head>
 
 <body>
-  <nav class="navbar">
-    <div class="container container-head">
-      <div class="content">
-        <div class="branding">
-          <img class="brand-logo" src="img/logo.png" alt="">
-          <div class="brand-name">Okta Pratama</div>
-
-        </div>
-        <div class="list-menu" id="list-menu">
-          <a class="menu" href="#hero">About Me</a>
-          <a class="menu" href="#journey">Journey</a>
-          <a class="menu" href="#jobs-history">Jobs</a>
-          <a class="menu" href="#footer">Contact </a>
-          <span class="underline"></span>
-        </div>
-        <div class="time-location">
-          <div class="location">Jakarta, Indonesia</div>
-          <div class="time" id="time">00:00:00</div>
-        </div>
-      </div>
-
-      <div class="hamburger" id="hamburger">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </div>
-    </div>
-  </nav>
-
-  <section class="hero-section" id="hero">
-    <div class="hero-backgorund"><img src="img/herobit.png" alt=""></div>
-    <div class="container container-hero">
-      <div class="row">
-        <div class="col-lg-6 content-left">
-          <div class="greeting">Hello! I'm <br> Okta Pratama</div>
-          <div class="bottomlinemobile">
+  <header class="site-header">
+        <div class="container container-head">
+          <div class="branding">
+            <img id="brandLogo" class="brand-logo" src="img/OP.png" alt="Okta Pratama logo">
+            <div class="brand-name">Okta Pratama</div>
           </div>
-        </div>
-        <div class=" col-lg-6 content-right">
-          <div class="title">
-            <div class="job">A Website Developer based in Probolinggo, Indonesia.</div>
-            <div class="description">I am passionate about website development, particularly the front-end side. My focus is on creating visually appealing, interactive, and user-friendly websites. With my expertise in front-end development, I strive to combine aesthetic design with an intuitive user experience.</div>
-          </div>
-          <div class="btn-hero">
-            <a href="#footer" class="btn btn-dark">Talk With Me</a>
-            <a href="#jobs-history" class="btn btn-outline-dark">See My Work</a>
-          </div>
-        </div>
-      </div>
 
-
-
-    </div>
-  </section>
-
-  <section class="journey" id="journey">
-    <div class="container container-journey">
-      <div class="title">
-        <div class="text">My Journey</div>
-        <div class="decoration"></div>
-      </div>
-      <div class="row">
-        <div class="col-lg-4 col-md-6 col-sm-12 column-journey">
-          <div class="journey-card">
-            <div class="icon"><i class="fa fa-user"></i></div>
-            <div class="decoration">
-              <div class="line"></div>
-              <div class="line"></div>
+          <nav class="main-nav" aria-label="Primary navigation">
+            <div class="list-menu" id="list-menu">
+              <a class="menu" href="#hero">About</a>
+              <a class="menu" href="#jobs-history">Projects</a>
+              <a class="menu" href="#journey">Journey</a>
+              <a class="menu" href="#footer">Contact</a>
+              <span class="underline"></span>
             </div>
-            <div class="year">2023</div>
-            <div class="name">Internship On Illiyin Studio</div>
-            <div class="description">I interned for 4 months at Illiyin Studio, where I Learned how to build a website using HTML, CSS, SASS, Webpack, and JavaScript.
+          </nav>
+
+          <div class="header-actions d-flex">
+            <div class="time-location mr-4">
+              <div class="location">Jakarta, Indonesia</div>
+              <div class="time" id="time">00:00:00</div>
+            </div>
+            <div class="header-controls">
+              <button id="hamburger" class="hamburger" aria-label="Toggle menu" aria-controls="list-menu" aria-expanded="false">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+              </button>
             </div>
           </div>
         </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 column-journey">
-          <div class="journey-card">
-            <div class="icon"><i class="fa fa-graduation-cap"></i></div>
-            <div class="decoration">
-              <div class="line"></div>
-              <div class="line"></div>
+      </header>
+
+      <main id="main">
+        <section class="hero-section" id="hero">
+          <div class="container container-hero">
+            <div class="hero-left" data-aos="fade-right" data-aos-duration="700">
+              <div class="greeting-wrap">
+                <!-- Visible marquee (decorative) -->
+                <div class="greeting-track" aria-hidden="true">
+                  <span class="greeting-item">Hello — I'm <span class="accent">Okta Pratama</span></span>
+                  <span class="greeting-item">Hello — I'm <span class="accent">Okta Pratama</span></span>
+                </div>
+                <!-- Accessible heading for screen readers -->
+                <h1 class="greeting-sr">Hello — I'm <span class="accent">Okta Pratama</span></h1>
+              </div>
+              <p class="lead">I design and build clean, fast, and accessible websites. My focus is front-end development with attention to usability and detail.</p>
+              <div class="meta">
+                <span class="role">Website Developer</span>
+                <span class="sep">•</span>
+                <span class="location-sm">Probolinggo, Indonesia</span>
+              </div>
             </div>
-            <div class="year">2024</div>
-            <div class="name">Graduated from SMK 2 Kraksaan, Probolinggo</div>
-            <div class="description">Major in Software Engineering, I learned how to develop websites and applications using
-              HTML, Java, and PHP. and also using Laravel 9.</div>
+
           </div>
-        </div>
-        <div class="col-lg-4 col-md-6 col-sm-12 column-journey">
-          <div class="journey-card">
-            <div class="icon"><i class="fa fa-university"></i></div>
-            <div class="decoration">
-              <div class="line"></div>
-              <div class="line"></div>
+        </section>
+
+        <section class="projects" id="jobs-history">
+          <div class="container">
+            <h2 class="section-title">Selected Projects</h2>
+            <div class="projects-grid">
+              <article class="project-card" tabindex="0" data-aos="zoom-in" data-aos-duration="600">
+                <figure class="project-figure">
+                  <img src="img/jobs1.png" alt="K3 SR project">
+                  <figcaption class="project-overlay">
+                      <div class="overlay-actions">
+                        <a class="project-code" href="#" target="_blank" rel="noopener" aria-label="View code on GitHub">
+                          <img src="svg/github.svg" alt="Github icon"/>
+                          <span class="icon-label">Code</span>
+                        </a>
+                        <a class="project-cta" href="#" target="_blank" rel="noopener" aria-label="Open site">
+                          <i class="fa fa-external-link" aria-hidden="true">
+                            <span class="icon-label">Preview</span>
+                          </i>
+                        </a>
+                      </div>
+                  </figcaption>
+                </figure>
+                  <div class="project-body">
+                    <h3 class="project-title">K3 SR — Campus Project</h3>
+                    <p class="project-desc">Website for K3 Safety Program at construction projects.</p>
+                    <div class="project-role">Role: Front-end Developer</div>
+                    <div class="project-tech">Technologies: <span class="tech-tag">HTML</span> <span class="tech-tag">CSS</span> <span class="tech-tag">JavaScript</span> <span class="tech-tag">Bootstrap</span></div>
+                  </div>
+              </article>
+
+              <article class="project-card" tabindex="0" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="80">
+                <figure class="project-figure">
+                  <img src="img/jobs2.png" alt="Pig Games project">
+                  <figcaption class="project-overlay">
+                      <div class="overlay-actions">
+                        <a class="project-code" href="#" target="_blank" rel="noopener" aria-label="View code on GitHub">
+                          <img src="svg/github.svg" alt="Github icon"/>
+                          <span class="icon-label">Code</span>
+                        </a>
+                        <a class="project-cta" href="#" target="_blank" rel="noopener" aria-label="Open site">
+                          <i class="fa fa-external-link" aria-hidden="true">
+                            <span class="icon-label">Preview</span>
+                          </i>
+                        </a>
+                      </div>
+                  </figcaption>
+                </figure>
+                  <div class="project-body">
+                    <h3 class="project-title">Pig Games</h3>
+                    <p class="project-desc">A simple browser-based turn-taking dice game.</p>
+                    <div class="project-role">Role: UI / Interaction</div>
+                    <div class="project-tech">Technologies: <span class="tech-tag">HTML</span> <span class="tech-tag">CSS</span> <span class="tech-tag">JavaScript</span></div>
+                  </div>
+              </article>
+
+              <article class="project-card" tabindex="0" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="160">
+                <figure class="project-figure">
+                  <img src="img/jobs3.png" alt="Global Digital Intelligence copy">
+                  <figcaption class="project-overlay">
+                      <div class="overlay-actions">
+                        <a class="project-code" href="#" target="_blank" rel="noopener" aria-label="View code on GitHub">
+                          <img src="svg/github.svg" alt="Github icon"/>
+                          <span class="icon-label">Code</span>
+                        </a>
+                        <a class="project-cta" href="#" target="_blank" rel="noopener" aria-label="Open site">
+                          <i class="fa fa-external-link" aria-hidden="true">
+                            <span class="icon-label">Preview</span>
+                          </i>
+                        </a>
+                      </div>
+                  </figcaption>
+                </figure>
+                  <div class="project-body">
+                    <h3 class="project-title">Global Digital Intelligence (copy)</h3>
+                    <p class="project-desc">A learning project copying a professional website layout.</p>
+                    <div class="project-role">Role: Learner / UI Rebuild</div>
+                    <div class="project-tech">Technologies: <span class="tech-tag">HTML</span> <span class="tech-tag">CSS</span></div>
+                  </div>
+              </article>
             </div>
-            <div class="year">2024 - Present</div>
-            <div class="name">State Polytechnic of Malang</div>
-            <div class="description">Currently pursuing a degree in Informatics Engineering, focusing on web
-              development and software engineering.</div>
           </div>
-        </div>
+        </section>
 
-      </div>
-    </div>
-  </section>
+        <section class="journey" id="journey">
+          <div class="container">
+            <h2 class="section-title">Journey</h2>
+            <div class="journey-grid">
+              <div class="journey-card" data-aos="fade-up" data-aos-duration="600">
+                <div class="year">2023</div>
+                <div class="name">Internship — Illiyin Studio</div>
+                <p class="description">4-month internship, learned HTML, CSS, SASS, Webpack, JavaScript.</p>
+              </div>
 
-  <section class="jobs-history" id="jobs-history">
-    <div class="container container-jobs-history">
-      <div class="title">
-        <div class="text">Jobs History</div>
-        <div class="decoration"></div>
-      </div>
-      <div class="row job">
-        <div class="col-lg-6 jobs-left">
-          <img src="img/jobs1.png" alt="">
-        </div>
-        <div class="col-lg-6 jobs-right">
-          <div class="jobs-link"><a href="https://k3-sumber-rezeky.vercel.app/" target="_blank">K3 SR <i
-                class="fa fa-external-link"></i></a></div>
-          <div class="jobs-title">Malang State Polytechnic campus project</div>
-          <div class="jobs-description">A website that provides information about the K3 Safety Program at Construction
-            Projects PT Sumber Rezeky. The website is built in 2024</div>
-          <div class="jobs-languages">
-            <div class="language">HTML</div>
-            <div class="language">SCSS</div>
-            <div class="language">JavaScript</div>
-            <div class="language">Bootstrap</div>
-          </div>
-        </div>
-      </div>
-      <div class="row job">
-        <div class="col-lg-6 jobs-left">
-          <img src="img/jobs2.png" alt="">
-        </div>
-        <div class="col-lg-6 jobs-right">
-          <div class="jobs-link"><a href="" target="_blank">PIG GAMES<i
-                class="fa fa-external-link"></i></a></div>
-          <div class="jobs-title">A game project for fun </div>
-          <div class="jobs-description">This project is a website-based game that uses virtual dice. The game mechanism involves each player taking turns rolling the dice. The result of each roll is automatically recorded as a score. The website is built in 2023</div>
-          <div class="jobs-languages">
-            <div class="language">HTML</div>
-            <div class="language">CSS</div>
-            <div class="language">JavaScript</div>
-          </div>
-        </div>
-      </div>
-      <div class="row job">
-        <div class="col-lg-6 jobs-left">
-          <img src="img/jobs3.png" alt="">
-        </div>
-        <div class="col-lg-6 jobs-right">
-          <div class="jobs-link"><a href="" target="_blank">Global Digital Intelligence<i
-                class="fa fa-external-link"></i></a></div>
-          <div class="jobs-title">Copy website Global Digital Intelligence</div>
-          <div class="jobs-description">This project is a copy website Global Digital Intelligence. The website is built in 2023</div>
-          <div class="jobs-languages">
-            <div class="language">HTML</div>
-            <div class="language">CSS</div>
-            <div class="language">JavaScript</div>
-            <div class="language">Bootstrap</div>
-          </div>
-        </div>
-      </div>
+              <div class="journey-card" data-aos="fade-up" data-aos-duration="700" data-aos-delay="80">
+                <div class="year">2024</div>
+                <div class="name">Graduated — SMK 2 Kraksaan</div>
+                <p class="description">Software Engineering; learned Java, PHP, Laravel.</p>
+              </div>
 
-      <!-- <div class="title mt-5">
-        <div class="text">Active Jobs</div>
-        <div class="decoration"></div>
-      </div> -->
-    </div>
-  </section>
+              <div class="journey-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="160">
+                <div class="year">2024 — Present</div>
+                <div class="name">State Polytechnic of Malang</div>
+                <p class="description">Pursuing Informatics Engineering focused on web development.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
 
-  <footer class="footer" id="footer">
-    <div class="container container-footer">
-      <div class="content formulir">
-        <div class="img"><img src="img/logo.png" alt=""></div>
-        <div class="content-inner">
-          <div class="title">Contact</div>
-          <div class="description">If you have any questions or inquiries, please don't hesitate to contact me.</div>
-          <div class="form">
-            <input type="text" placeholder="Your Name">
-            <input type="text" placeholder="Your Email">
-            <input class="message" type="text" placeholder="Your Message">
-            <button class="btn btn-dark">Send</button>
+      <footer class="footer" id="footer">
+        <div class="container container-footer">
+          <div class="footer-grid">
+          <div class="contact-card" data-aos="fade-up" data-aos-duration="700">
+            <img src="img/OP.png" alt="Okta logo" class="footer-logo">
+            <h3>Contact</h3>
+            <p>If you'd like to work together, send a message.</p>
+            <form class="contact-form" action="#" method="post">
+              <input type="email" name="email" placeholder="Your email" required>
+              <textarea name="message" rows="4" placeholder="Your message" required></textarea>
+              <button class="btn btn-dark" type="submit">Send</button>
+            </form>
+          </div>
+
+          <div class="social-card" data-aos="fade-up" data-aos-duration="800" data-aos-delay="80">
+            <h3>Buy me a coffee</h3>
+            <div class="social-grid">
+              <a class="footer-card" href="mailto:oktxip@gmail.com">
+                <div class="icon"><img src="svg/envelope.svg" alt="Gmail"></div>
+                <div class="name">Gmail</div>
+              </a>
+              <a class="footer-card" href="#">
+                <div class="icon"><img src="svg/instagram.svg" alt="Instagram"></div>
+                <div class="name">Instagram</div>
+              </a>
+              <a class="footer-card" href="#">
+                <div class="icon"><img src="svg/github.svg" alt="Github"></div>
+                <div class="name">Github</div>
+              </a>
+              <a class="footer-card" href="#">
+                <div class="icon"><img src="svg/linkedin.svg" alt="LinkedIn"></div>
+                <div class="name">LinkedIn</div>
+              </a>
+              <a class="footer-card" href="https://discord.gg/rCv9bA72BJ">
+                <div class="icon"><img src="svg/discord.svg" alt="Discord"></div>
+                <div class="name">Discord</div>
+              </a>
+              <a class="footer-card" href="https://saweria.co/oktxip">
+                <div class="icon"><img src="svg/money.svg" alt="Saweria"></div>
+                <div class="name">Saweria</div>
+              </a>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="content">
-        <div class="title">Order me a cup of coffee</div>
-        <div class="row">
-          <div class="col-lg-2 col-md-3 col-sm-6 col-6 column-media">
-            <a href="mailto:oktxip@gmail.com" class="footer-card">
-              <div class="icon"><img src="svg/envelope.svg" alt=""></div>
-              <div class="name">Gmail</div>
-            </a>
-          </div>
-          <div class="col-lg-2 col-md-3 col-sm-6 col-6 column-media">
-            <a href="#" class="footer-card">
-              <div class="icon"><img src="svg/instagram.svg" alt=""></div>
-              <div class="name">Instagram</div>
-            </a>
-          </div>
-          <div class="col-lg-2 col-md-3 col-sm-6 col-6 column-media">
-            <a href="#" class="footer-card">
-              <div class="icon"><img src="svg/github.svg" alt=""></div>
-              <div class="name">Github</div>
-            </a>
-          </div>
-          <div class="col-lg-2 col-md-3 col-sm-6 col-6 column-media">
-            <a href="#" class="footer-card">
-              <div class="icon"><img src="svg/linkedin.svg" alt=""></div>
-              <div class="name">Linkedin</div>
-            </a>
-          </div>
-          <div class="col-lg-2 col-md-3 col-sm-6 col-6 column-media">
-            <a href="https://discord.gg/rCv9bA72BJ" class="footer-card">
-              <div class="icon"><img src="svg/discord.svg" alt=""></i></div>
-              <div class="name">Discord</div>
-            </a>
-          </div>
-          <div class="col-lg-2 col-md-3 col-sm-6 col-6 column-media">
-            <a href="https://saweria.co/oktxip" class="footer-card">
-              <div class="icon"><img src="svg/money.svg" alt=""></div>
-              <div class="name">Saweria</div>
-            </a>
-          </div>
+          <div class="copyright">© 2024 Okta Pratama. All rights reserved.</div>
         </div>
-      </div>
-      <div class="footer-copyright">© 2024 Okta Pratama. All rights reserved.</div>
-    </div>
-  </footer>
+      </footer>
 
 
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="script.js"></script>
-</body>
+      <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+      <script src="script.js"></script>
+    </body>
 
-</html>
+    </html>

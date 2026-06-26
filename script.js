@@ -8,55 +8,66 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   update_time();
   setInterval(update_time, 1000);
-
   const hamburger = document.getElementById("hamburger");
   const listMenu = document.getElementById("list-menu");
-  hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
-    listMenu.classList.toggle("active");
-  });
-  document.addEventListener("click", (e) => {
-    if (!hamburger.contains(e.target) && !listMenu.contains(e.target)) {
-      hamburger.classList.remove("active");
-      listMenu.classList.remove("active");
-    }
+  // Mobile menu toggle
+  function closeMenu() {
+    hamburger && hamburger.classList.remove('active');
+    hamburger && hamburger.setAttribute('aria-expanded','false');
+    listMenu && listMenu.classList.remove('active');
+  }
+
+  hamburger && hamburger.addEventListener('click', (e) => {
+    const active = hamburger.classList.toggle('active');
+    hamburger.setAttribute('aria-expanded', String(active));
+    if (listMenu) listMenu.classList.toggle('active', active);
   });
 
-  const menuLinks = document.querySelectorAll(".menu");
-  const underline = document.querySelector(".underline");
+  document.addEventListener('click', (e) => {
+    if (!hamburger.contains(e.target) && !listMenu.contains(e.target)) closeMenu();
+  });
 
+  // Smooth scroll + close mobile menu on link click
+  const menuLinks = document.querySelectorAll('.menu');
   menuLinks.forEach(link => {
-    link.addEventListener("click", (e) => {
+    link.addEventListener('click', (e) => {
       e.preventDefault();
-      document.querySelector(link.getAttribute("href")).scrollIntoView({
-        behavior: "smooth"
-      });
+      const target = document.querySelector(link.getAttribute('href'));
+      if (target) target.scrollIntoView({behavior:'smooth'});
+      closeMenu();
     });
   });
 
-  const sections = document.querySelectorAll("section, footer");
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        menuLinks.forEach(link => {
-          link.classList.remove("active");
-          if (link.getAttribute("href").replace("#", "") === entry.target.id) {
-            link.classList.add("active");
-            const { offsetLeft, offsetWidth } = link;
-            underline.style.left = offsetLeft + "px";
-            underline.style.width = offsetWidth + "px";
+  // section observer for desktop underline (if underline exists)
+  const underline = document.querySelector('.underline');
+  const sections = document.querySelectorAll('section, footer');
+  if (sections.length && underline) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const desktopLink = document.querySelector(`.list-menu .menu[href="#${entry.target.id}"]`);
+          document.querySelectorAll('.list-menu .menu').forEach(l=>l.classList.remove('active'));
+          if (desktopLink) {
+            desktopLink.classList.add('active');
+            const { offsetLeft, offsetWidth } = desktopLink;
+            underline.style.left = offsetLeft + 'px';
+            underline.style.width = offsetWidth + 'px';
+          } else {
+            underline.style.width = '0';
           }
-        });
-      }
-    });
-  }, { threshold: 0.3 });
+        }
+      });
+    },{threshold:0.35});
+    sections.forEach(s=>observer.observe(s));
+    const firstActive = document.querySelector('.list-menu .menu.active') || document.querySelector('.list-menu .menu');
+    if (firstActive) {
+      const { offsetLeft, offsetWidth } = firstActive;
+      underline.style.left = offsetLeft + 'px';
+      underline.style.width = offsetWidth + 'px';
+    }
+  }
 
-  sections.forEach(section => observer.observe(section));
-
-  const firstActive = document.querySelector(".menu.active") || menuLinks[0];
-  const { offsetLeft, offsetWidth } = firstActive;
-  underline.style.left = offsetLeft + "px";
-  underline.style.width = offsetWidth + "px";
+  // no theme toggle / dark mode — simplified site behavior
 });
-
-AOS.init();
+ 
+AOS && AOS.init && AOS.init();
