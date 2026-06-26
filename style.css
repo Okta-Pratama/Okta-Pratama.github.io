@@ -255,12 +255,9 @@ body {
 
 /* marquee greeting wrapper to fix overflow */
 .greeting-wrap {
-  width: 100vw;
-  position: relative;
-  left: 50%;
-  transform: translateX(-50%);
+  width: 100%;
   overflow: hidden;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 /* marquee greeting track */
