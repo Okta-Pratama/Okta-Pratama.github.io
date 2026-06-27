@@ -968,10 +968,6 @@ section {
     display: none
   }
 
-  .hamburger {
-    display: flex
-  }
-
   .job {
     grid-template-columns: 1fr
   }
