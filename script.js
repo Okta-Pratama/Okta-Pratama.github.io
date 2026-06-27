@@ -70,4 +70,4 @@ document.addEventListener("DOMContentLoaded", () => {
   // no theme toggle / dark mode — simplified site behavior
 });
  
-AOS && AOS.init && AOS.init();
+AOS && AOS.init && AOS.init({ once: true });
