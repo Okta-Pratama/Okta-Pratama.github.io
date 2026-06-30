@@ -1126,6 +1126,9 @@ section {
   .hide-mobile {
     display: none !important;
   }
+  .time-location {
+    display: none !important;
+  }
   .block-mobile {
     flex-basis: 100%;
     margin-top: 0.25rem;
