@@ -126,15 +126,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     initFilters();
-    
-    if (typeof VanillaTilt !== 'undefined') {
-      VanillaTilt.init(document.querySelectorAll(".project-card"), {
-        max: 10,
-        speed: 400,
-        glare: true,
-        "max-glare": 0.2,
-      });
-    }
+
   }
 
   function initFilters() {
