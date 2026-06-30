@@ -91,43 +91,79 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Project Filtering
-  const filterBtns = document.querySelectorAll(".filter-btn");
-  const projectCards = document.querySelectorAll(".project-card");
+  // Load Projects from projects.js data
+  const projectsContainer = document.getElementById("projects-container");
+  if (projectsContainer && typeof projectsData !== 'undefined') {
+    projectsData.forEach((proj, index) => {
+      const delay = (index % 3) * 80;
+      const techPills = proj.tech.map(t => `<span class="bento-pill">${t}</span>`).join(" ");
+      
+      const article = document.createElement("article");
+      article.className = "project-card bento-card";
+      article.setAttribute("data-category", proj.category);
+      article.setAttribute("data-aos", "zoom-in");
+      article.setAttribute("data-aos-duration", "600");
+      if(delay > 0) article.setAttribute("data-aos-delay", delay);
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener("click", () => {
-      filterBtns.forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-      const filterValue = btn.getAttribute("data-filter");
-
-      projectCards.forEach(card => {
-        // ensure transition
-        card.style.transition = "all 0.3s ease";
-        if (filterValue === "all" || card.getAttribute("data-category") === filterValue) {
-          card.style.display = "block";
-          setTimeout(() => {
-            card.style.opacity = "1";
-            card.style.transform = "scale(1)";
-          }, 50);
-        } else {
-          card.style.opacity = "0";
-          card.style.transform = "scale(0.8)";
-          setTimeout(() => {
-            card.style.display = "none";
-          }, 300);
-        }
-      });
+      article.innerHTML = `
+        <figure class="project-figure">
+          <img src="${proj.image}" alt="${proj.title}">
+        </figure>
+        <div class="project-body">
+          <h3 class="project-title">${proj.title}</h3>
+          <p class="project-desc">${proj.description}</p>
+          <div class="project-subtitle">${proj.subtitle}</div>
+          <div class="project-tech">
+            ${techPills}
+          </div>
+          <div class="project-links">
+            <a href="${proj.github}" class="bento-text-link"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>
+            <a href="${proj.preview}" class="bento-text-link"><i class="fa fa-external-link" aria-hidden="true"></i> Preview</a>
+          </div>
+        </div>
+      `;
+      projectsContainer.appendChild(article);
     });
-  });
 
-  // Init Vanilla Tilt
-  if (typeof VanillaTilt !== 'undefined') {
-    VanillaTilt.init(document.querySelectorAll(".project-card"), {
-      max: 10,
-      speed: 400,
-      glare: true,
-      "max-glare": 0.2,
+    initFilters();
+    
+    if (typeof VanillaTilt !== 'undefined') {
+      VanillaTilt.init(document.querySelectorAll(".project-card"), {
+        max: 10,
+        speed: 400,
+        glare: true,
+        "max-glare": 0.2,
+      });
+    }
+  }
+
+  function initFilters() {
+    const filterBtns = document.querySelectorAll(".filter-btn");
+    const projectCards = document.querySelectorAll(".project-card");
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        filterBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        const filterValue = btn.getAttribute("data-filter");
+
+        projectCards.forEach(card => {
+          card.style.transition = "all 0.3s ease";
+          if (filterValue === "all" || card.getAttribute("data-category") === filterValue) {
+            card.style.display = "block";
+            setTimeout(() => {
+              card.style.opacity = "1";
+              card.style.transform = "scale(1)";
+            }, 50);
+          } else {
+            card.style.opacity = "0";
+            card.style.transform = "scale(0.8)";
+            setTimeout(() => {
+              card.style.display = "none";
+            }, 300);
+          }
+        });
+      });
     });
   }
 
