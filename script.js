@@ -67,7 +67,111 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // no theme toggle / dark mode — simplified site behavior
+  // Dark Mode Toggle
+  const themeToggle = document.getElementById("theme-toggle");
+  const themeIcon = document.getElementById("theme-icon");
+  const htmlEl = document.documentElement;
+  
+  const savedTheme = localStorage.getItem("theme") || "light";
+  if (savedTheme === "dark") {
+    htmlEl.setAttribute("data-theme", "dark");
+    if(themeIcon) themeIcon.classList.replace("fa-moon-o", "fa-sun-o");
+  }
+
+  themeToggle && themeToggle.addEventListener("click", () => {
+    const isDark = htmlEl.getAttribute("data-theme") === "dark";
+    if (isDark) {
+      htmlEl.removeAttribute("data-theme");
+      localStorage.setItem("theme", "light");
+      if(themeIcon) themeIcon.classList.replace("fa-sun-o", "fa-moon-o");
+    } else {
+      htmlEl.setAttribute("data-theme", "dark");
+      localStorage.setItem("theme", "dark");
+      if(themeIcon) themeIcon.classList.replace("fa-moon-o", "fa-sun-o");
+    }
+  });
+
+  // Project Filtering
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  const projectCards = document.querySelectorAll(".project-card");
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      filterBtns.forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      const filterValue = btn.getAttribute("data-filter");
+
+      projectCards.forEach(card => {
+        // ensure transition
+        card.style.transition = "all 0.3s ease";
+        if (filterValue === "all" || card.getAttribute("data-category") === filterValue) {
+          card.style.display = "block";
+          setTimeout(() => {
+            card.style.opacity = "1";
+            card.style.transform = "scale(1)";
+          }, 50);
+        } else {
+          card.style.opacity = "0";
+          card.style.transform = "scale(0.8)";
+          setTimeout(() => {
+            card.style.display = "none";
+          }, 300);
+        }
+      });
+    });
+  });
+
+  // Init Vanilla Tilt
+  if (typeof VanillaTilt !== 'undefined') {
+    VanillaTilt.init(document.querySelectorAll(".project-card"), {
+      max: 10,
+      speed: 400,
+      glare: true,
+      "max-glare": 0.2,
+    });
+  }
+
+  // Init Particles.js
+  if (typeof particlesJS !== 'undefined') {
+    particlesJS('particles-js', {
+      "particles": {
+        "number": { "value": 40, "density": { "enable": true, "value_area": 800 } },
+        "color": { "value": "#6b7280" },
+        "shape": { "type": "circle" },
+        "opacity": { "value": 0.3, "random": false },
+        "size": { "value": 3, "random": true },
+        "line_linked": {
+          "enable": true,
+          "distance": 150,
+          "color": "#6b7280",
+          "opacity": 0.2,
+          "width": 1
+        },
+        "move": {
+          "enable": true,
+          "speed": 1.5,
+          "direction": "none",
+          "random": false,
+          "straight": false,
+          "out_mode": "out",
+          "bounce": false
+        }
+      },
+      "interactivity": {
+        "detect_on": "canvas",
+        "events": {
+          "onhover": { "enable": true, "mode": "grab" },
+          "onclick": { "enable": true, "mode": "push" },
+          "resize": true
+        },
+        "modes": {
+          "grab": { "distance": 140, "line_linked": { "opacity": 0.5 } },
+          "push": { "particles_nb": 4 }
+        }
+      },
+      "retina_detect": true
+    });
+  }
 });
  
 AOS && AOS.init && AOS.init({ once: true });

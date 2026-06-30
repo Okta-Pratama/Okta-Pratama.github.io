@@ -36,11 +36,14 @@
             </div>
           </nav>
 
-          <div class="header-actions d-flex">
-            <div class="time-location mr-4">
+          <div class="header-actions d-flex align-items-center">
+            <div class="time-location mr-3">
               <div class="location">Jakarta, Indonesia</div>
               <div class="time" id="time">00:00:00</div>
             </div>
+            <button id="theme-toggle" class="theme-toggle mr-3" aria-label="Toggle dark mode">
+              <i class="fa fa-moon-o" id="theme-icon"></i>
+            </button>
             <div class="header-controls">
               <button id="hamburger" class="hamburger" aria-label="Toggle menu" aria-controls="list-menu" aria-expanded="false">
                 <span class="bar"></span>
@@ -54,7 +57,8 @@
 
       <main id="main">
         <section class="hero-section" id="hero">
-          <div class="greeting-wrap" data-aos="fade-in" data-aos-duration="1000">
+          <div id="particles-js" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
+          <div class="greeting-wrap" data-aos="fade-in" data-aos-duration="1000" style="position: relative; z-index: 1;">
             <!-- Visible marquee (decorative) -->
             <div class="greeting-track" aria-hidden="true">
               <span class="greeting-item">Hello — I'm <span class="accent">Okta Pratama</span></span>
@@ -63,24 +67,17 @@
             <!-- Accessible heading for screen readers -->
             <h1 class="greeting-sr">Hello — I'm <span class="accent">Okta Pratama</span></h1>
           </div>
-          <div class="container container-hero">
+          <div class="container container-hero" style="position: relative; z-index: 1;">
             <div class="hero-left" data-aos="fade-up" data-aos-duration="700" data-aos-delay="200">
               <p class="lead">I design and build clean, fast, and accessible websites. My focus is front-end development with attention to usability and detail.</p>
               <div class="meta">
                 <span class="role">Website Developer</span>
                 <span class="sep">•</span>
                 <span class="role">Game Artist</span>
-                <span class="sep">•</span>
-                <span class="location-sm">Probolinggo, Indonesia</span>
+                <span class="sep hide-mobile">•</span>
+                <span class="location-sm block-mobile">Probolinggo, Indonesia</span>
               </div>
-              <div class="btn-hero-group">
-                <a href="#" class="btn btn-dark">
-                  <i class="fa fa-download" aria-hidden="true"></i> Download CV
-                </a>
-                <a href="#jobs-history" class="btn btn-outline-dark">
-                  View Projects
-                </a>
-              </div>
+
             </div>
           </div>
         </section>
@@ -88,8 +85,7 @@
         <section class="skills" id="skills">
           <div class="container">
             <div class="sponsor-board" data-aos="fade-up" data-aos-duration="600">
-              <div class="sponsor-track">
-                <!-- Original Set -->
+              <div class="sponsor-grid">
                 <div class="sponsor-logo"><i class="devicon-html5-plain"></i><span>HTML5</span></div>
                 <div class="sponsor-logo"><i class="devicon-css3-plain"></i><span>CSS3</span></div>
                 <div class="sponsor-logo"><i class="devicon-javascript-plain"></i><span>JavaScript</span></div>
@@ -98,35 +94,11 @@
                 <div class="sponsor-logo"><i class="devicon-bootstrap-plain"></i><span>Bootstrap</span></div>
                 <div class="sponsor-logo"><i class="devicon-git-plain"></i><span>Git</span></div>
                 <div class="sponsor-logo"><i class="devicon-figma-plain"></i><span>Figma</span></div>
-                <!-- Duplicated Set for Marquee -->
-                <div class="sponsor-logo"><i class="devicon-html5-plain"></i><span>HTML5</span></div>
-                <div class="sponsor-logo"><i class="devicon-css3-plain"></i><span>CSS3</span></div>
-                <div class="sponsor-logo"><i class="devicon-javascript-plain"></i><span>JavaScript</span></div>
-                <div class="sponsor-logo"><i class="devicon-react-original"></i><span>React</span></div>
-                <div class="sponsor-logo"><i class="devicon-tailwindcss-original"></i><span>Tailwind</span></div>
-                <div class="sponsor-logo"><i class="devicon-bootstrap-plain"></i><span>Bootstrap</span></div>
-                <div class="sponsor-logo"><i class="devicon-git-plain"></i><span>Git</span></div>
-                <div class="sponsor-logo"><i class="devicon-figma-plain"></i><span>Figma</span></div>
-              </div>
-              <div class="sponsor-track reverse-track">
-                <!-- Shuffled Set -->
-                <div class="sponsor-logo"><i class="devicon-react-original"></i><span>React</span></div>
-                <div class="sponsor-logo"><i class="devicon-bootstrap-plain"></i><span>Bootstrap</span></div>
-                <div class="sponsor-logo"><i class="devicon-javascript-plain"></i><span>JavaScript</span></div>
-                <div class="sponsor-logo"><i class="devicon-figma-plain"></i><span>Figma</span></div>
-                <div class="sponsor-logo"><i class="devicon-html5-plain"></i><span>HTML5</span></div>
-                <div class="sponsor-logo"><i class="devicon-tailwindcss-original"></i><span>Tailwind</span></div>
-                <div class="sponsor-logo"><i class="devicon-git-plain"></i><span>Git</span></div>
-                <div class="sponsor-logo"><i class="devicon-css3-plain"></i><span>CSS3</span></div>
-                <!-- Duplicated Shuffled Set -->
-                <div class="sponsor-logo"><i class="devicon-react-original"></i><span>React</span></div>
-                <div class="sponsor-logo"><i class="devicon-bootstrap-plain"></i><span>Bootstrap</span></div>
-                <div class="sponsor-logo"><i class="devicon-javascript-plain"></i><span>JavaScript</span></div>
-                <div class="sponsor-logo"><i class="devicon-figma-plain"></i><span>Figma</span></div>
-                <div class="sponsor-logo"><i class="devicon-html5-plain"></i><span>HTML5</span></div>
-                <div class="sponsor-logo"><i class="devicon-tailwindcss-original"></i><span>Tailwind</span></div>
-                <div class="sponsor-logo"><i class="devicon-git-plain"></i><span>Git</span></div>
-                <div class="sponsor-logo"><i class="devicon-css3-plain"></i><span>CSS3</span></div>
+                <div class="sponsor-logo"><i class="devicon-webpack-plain"></i><span>Webpack</span></div>
+                <div class="sponsor-logo"><i class="devicon-supabase-plain"></i><span>Supabase</span></div>
+                <div class="sponsor-logo"><i class="devicon-postgresql-plain"></i><span>PostgreSQL</span></div>
+                <div class="sponsor-logo"><i class="devicon-mysql-plain"></i><span>MySQL</span></div>
+                <div class="sponsor-logo"><i class="devicon-vercel-original"></i><span>Vercel</span></div>
               </div>
             </div>
           </div>
@@ -156,9 +128,14 @@
 
         <section class="projects" id="jobs-history">
           <div class="container">
-            <h2 class="section-title">Selected Projects</h2>
+            <h2 class="section-title">Featured Work</h2>
+            <div class="project-filters" data-aos="fade-up" style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
+              <button class="filter-btn active" data-filter="all">All</button>
+              <button class="filter-btn" data-filter="web">Web</button>
+              <button class="filter-btn" data-filter="game">Game</button>
+            </div>
             <div class="projects-grid">
-                                                                      <article class="project-card bento-card" data-aos="zoom-in" data-aos-duration="600">
+                                                                      <article class="project-card bento-card" data-category="web" data-aos="zoom-in" data-aos-duration="600">
                 <figure class="project-figure">
                   <img src="img/jobs1.png" alt="K3 SR project">
                 </figure>
@@ -178,7 +155,7 @@
                 </div>
               </article>
 
-                                                                      <article class="project-card bento-card" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="80">
+                                                                      <article class="project-card bento-card" data-category="game" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="80">
                 <figure class="project-figure">
                   <img src="img/jobs2.png" alt="Pig Games project">
                 </figure>
@@ -198,7 +175,7 @@
                 </div>
               </article>
 
-                                                                      <article class="project-card bento-card" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="160">
+                                                                      <article class="project-card bento-card" data-category="web" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="160">
                 <figure class="project-figure">
                   <img src="img/jobs3.png" alt="Global Digital Intelligence copy">
                 </figure>
@@ -218,7 +195,7 @@
                 </div>
               </article>
 
-                                                                      <article class="project-card bento-card" data-aos="zoom-in" data-aos-duration="600">
+                                                                      <article class="project-card bento-card" data-category="web" data-aos="zoom-in" data-aos-duration="600">
                 <figure class="project-figure">
                   <img src="img/jobs1.png" alt="K3 SR project">
                 </figure>
@@ -238,7 +215,7 @@
                 </div>
               </article>
 
-                                                                      <article class="project-card bento-card" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="80">
+                                                                      <article class="project-card bento-card" data-category="game" data-aos="zoom-in" data-aos-duration="700" data-aos-delay="80">
                 <figure class="project-figure">
                   <img src="img/jobs2.png" alt="Pig Games project">
                 </figure>
@@ -258,7 +235,7 @@
                 </div>
               </article>
 
-                                                                      <article class="project-card bento-card" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="160">
+                                                                      <article class="project-card bento-card" data-category="web" data-aos="zoom-in" data-aos-duration="800" data-aos-delay="160">
                 <figure class="project-figure">
                   <img src="img/jobs3.png" alt="Global Digital Intelligence copy">
                 </figure>
@@ -290,6 +267,7 @@
             <h2 class="footer-heading">Let's work together.</h2>
             <p class="footer-sub">I'm always open to discussing web development projects, creative ideas, or opportunities to be part of your vision.</p>
             
+
             <div class="footer-links">
               <a href="mailto:oktxip@gmail.com" class="footer-pill">
                 <i class="fa fa-envelope"></i> Email Me
@@ -311,6 +289,8 @@
 
 
       <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
       <script src="script.js"></script>
     </body>
 
