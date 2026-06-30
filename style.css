@@ -482,9 +482,6 @@ img {
   background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.8) 50%, rgba(0, 0, 0, 0.3) 100%);
 }
 
-.project-body .project-links {
-  pointer-events: auto;
-}
 
 .project-subtitle {
   order: -1;
@@ -530,55 +527,6 @@ img {
   margin-bottom: 0.3rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-}
-
-.project-links {
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  display: flex;
-  gap: 1rem;
-  margin: 0;
-  opacity: 0;
-  transform: translate(-50%, -50%) scale(0.9);
-  pointer-events: none;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  z-index: 20;
-}
-
-.project-card:hover .project-links {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-  pointer-events: auto;
-}
-
-.bento-text-link {
-  font-size: 0.85rem;
-  font-weight: 700;
-  color: #ffffff;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  border-radius: 100px;
-  transition: all 0.3s ease;
-  background: rgba(15, 23, 42, 0.6);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-}
-
-.bento-text-link i {
-  font-size: 1.1rem;
-}
-
-.bento-text-link:hover {
-  background: #ffffff;
-  color: #0f172a;
-  transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
 }
 
 /* Tech Stack Sponsor Board */

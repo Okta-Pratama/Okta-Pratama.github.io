@@ -98,7 +98,15 @@ document.addEventListener("DOMContentLoaded", () => {
       const delay = (index % 3) * 80;
       const techPills = proj.tech.map(t => `<span class="bento-pill">${t}</span>`).join(" ");
       
-      const article = document.createElement("article");
+      const article = document.createElement("a");
+      article.href = proj.preview;
+      if (proj.preview !== "#") {
+        article.target = "_blank";
+        article.rel = "noopener noreferrer";
+      }
+      article.style.textDecoration = "none";
+      article.style.color = "inherit";
+      article.style.cursor = "pointer";
       article.className = "project-card bento-card";
       article.setAttribute("data-category", proj.category);
       article.setAttribute("data-aos", "zoom-in");
@@ -115,10 +123,6 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="project-subtitle">${proj.subtitle}</div>
           <div class="project-tech">
             ${techPills}
-          </div>
-          <div class="project-links">
-            <a href="${proj.github}" class="bento-text-link"><i class="fa fa-github" aria-hidden="true"></i> GitHub</a>
-            <a href="${proj.preview}" class="bento-text-link"><i class="fa fa-external-link" aria-hidden="true"></i> Preview</a>
           </div>
         </div>
       `;
