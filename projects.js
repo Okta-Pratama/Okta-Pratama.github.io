@@ -24,7 +24,7 @@ const projectsData = [
     "category": "web",
     "image": "https://ik.imagekit.io/rxvi2ripqh/ops-diamond.vercel.app_login.png",
     "tech": ["HTML", "JavaScript", "Supabase", "PostgreSQL", "CSS"],
-    "preview": "https://store.okta-pratama.online/"
+    "preview": "https://store.oktxip.online/"
   },
   {
     "title": "OPS Diamond",
@@ -33,6 +33,6 @@ const projectsData = [
     "category": "web",
     "image": "https://ik.imagekit.io/rxvi2ripqh/ops-diamond.vercel.app_.jpg",
     "tech": ["HTML", "JavaScript", "Supabase", "PostgreSQL", "CSS"],
-    "preview": "https://store.okta-pratama.online/"
+    "preview": "https://store.oktxip.online/"
   },
 ]
