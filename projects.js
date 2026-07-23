@@ -24,6 +24,6 @@ const projectsData = [
     "category": "web",
     "image": "https://ik.imagekit.io/rxvi2ripqh/ops-diamond.vercel.app_login.png",
     "tech": ["HTML", "JavaScript", "Supabase", "PostgreSQL", "CSS"],
-    "preview": "https://store.oktxip.online/"
+    "preview": "https://diamondgroup-store.vercel.app/"
   },
 ]
