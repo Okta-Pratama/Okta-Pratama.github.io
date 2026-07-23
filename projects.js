@@ -26,13 +26,4 @@ const projectsData = [
     "tech": ["HTML", "JavaScript", "Supabase", "PostgreSQL", "CSS"],
     "preview": "https://store.oktxip.online/"
   },
-  {
-    "title": "OPS Diamond",
-    "description": "This is a simple web application to help manage business.",
-    "subtitle": "Sales and Marketing",
-    "category": "web",
-    "image": "https://ik.imagekit.io/rxvi2ripqh/ops-diamond.vercel.app_.jpg",
-    "tech": ["HTML", "JavaScript", "Supabase", "PostgreSQL", "CSS"],
-    "preview": "https://store.oktxip.online/"
-  },
 ]
