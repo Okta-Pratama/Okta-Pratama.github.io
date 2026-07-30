@@ -108,7 +108,13 @@ document.addEventListener("DOMContentLoaded", () => {
       article.style.color = "inherit";
       article.style.cursor = "pointer";
       article.className = "project-card bento-card";
-      article.setAttribute("data-category", proj.category);
+      let categoryAttr = "";
+      if (Array.isArray(proj.category)) {
+        categoryAttr = proj.category.join(" ");
+      } else {
+        categoryAttr = proj.category;
+      }
+      article.setAttribute("data-category", categoryAttr);
       article.setAttribute("data-aos", "zoom-in");
       article.setAttribute("data-aos-duration", "600");
       if(delay > 0) article.setAttribute("data-aos-delay", delay);
@@ -119,7 +125,6 @@ document.addEventListener("DOMContentLoaded", () => {
         </figure>
         <div class="project-body">
           <h3 class="project-title">${proj.title}</h3>
-          <p class="project-desc">${proj.description}</p>
           <div class="project-subtitle">${proj.subtitle}</div>
           <div class="project-tech">
             ${techPills}
@@ -145,7 +150,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         projectCards.forEach(card => {
           card.style.transition = "all 0.3s ease";
-          if (filterValue === "all" || card.getAttribute("data-category") === filterValue) {
+          const cardCategories = card.getAttribute("data-category").split(" ");
+          if (filterValue === "all" || cardCategories.includes(filterValue)) {
             card.style.display = "block";
             setTimeout(() => {
               card.style.opacity = "1";
