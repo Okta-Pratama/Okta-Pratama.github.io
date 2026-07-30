@@ -122,12 +122,15 @@
         <section class="skills" id="skills">
           <div class="container">
             <h2 class="section-title" style="text-align: center; margin-bottom: 3rem;">Tech Stack</h2>
-            <div class="sponsor-board" data-aos="fade-up" data-aos-duration="600">
-              <div class="sponsor-grid">
+            <div class="sponsor-board" data-aos="fade-up" data-aos-duration="600" style="margin-bottom: 1rem;">
+              <div class="sponsor-grid sponsor-grid-sm">
                 <div class="sponsor-logo"><i class="devicon-html5-plain"></i><span>HTML5</span></div>
                 <div class="sponsor-logo"><i class="devicon-css3-plain"></i><span>CSS3</span></div>
                 <div class="sponsor-logo"><i class="devicon-javascript-plain"></i><span>JavaScript</span></div>
-                <div class="sponsor-logo"><i class="devicon-react-original"></i><span>React</span></div>
+                <div class="sponsor-logo"><i class="devicon-php-plain"></i><span>PHP</span></div>
+                <div class="sponsor-logo"><i class="devicon-java-plain"></i><span>Java</span></div>
+                <div class="sponsor-logo"><i class="devicon-sass-original"></i><span>Sass</span></div>
+                <div class="sponsor-logo"><i class="devicon-nodejs-plain"></i><span>NodeJS</span></div>
                 <div class="sponsor-logo"><i class="devicon-tailwindcss-original"></i><span>Tailwind</span></div>
                 <div class="sponsor-logo"><i class="devicon-bootstrap-plain"></i><span>Bootstrap</span></div>
                 <div class="sponsor-logo"><i class="devicon-git-plain"></i><span>Git</span></div>
@@ -140,6 +143,18 @@
                 <div class="sponsor-logo"><i class="devicon-laravel-original"></i><span>Laravel</span></div>
               </div>
             </div>
+
+            <h3 style="text-align: center; margin: 1rem 0 1.5rem; font-size: 1rem; font-weight: 500; opacity: 0.6;  letter-spacing: 1px;">On Progress Mastering</h3>
+            <div class="sponsor-board" data-aos="fade-up" data-aos-duration="600" style="margin-bottom: 0; padding-top: 0;">
+              <div class="sponsor-grid sponsor-grid-sm">
+                <div class="sponsor-logo"><i class="devicon-react-original"></i><span>React</span></div>
+                <div class="sponsor-logo"><i class="devicon-typescript-plain"></i><span>TypeScript</span></div>
+                <div class="sponsor-logo"><i class="devicon-python-plain"></i><span>Python</span></div>
+                <div class="sponsor-logo"><i class="devicon-nextjs-plain"></i><span>Next.js</span></div>
+                <div class="sponsor-logo"><i class="devicon-unity-plain"></i><span>Unity</span></div>
+                <div class="sponsor-logo"><i class="devicon-blender-original"></i><span>Blender</span></div>
+              </div>
+            </div>
           </div>
         </section>
         <section class="services" id="services" style="padding: 6rem 0;">
@@ -147,19 +162,19 @@
             <h2 class="section-title" style="text-align: center; margin-bottom: 3rem;">What I Do</h2>
             <div class="services-grid" data-aos="fade-up" data-aos-duration="800">
               <div class="service-card glass-bento">
-                <div class="service-icon"><i class="devicon-react-original"></i></div>
-                <h3 class="service-title">Front-End Development</h3>
-                <p class="service-desc">Building responsive, lightning-fast, and interactive user interfaces using modern frameworks like React and Tailwind CSS.</p>
+                <div class="service-icon"><i class="devicon-html5-plain"></i></div>
+                <h3 class="service-title">Web Development</h3>
+                <p class="service-desc">Building responsive, dynamic, and interactive web applications using HTML, CSS, JavaScript, PHP, and Laravel.</p>
               </div>
               <div class="service-card glass-bento">
                 <div class="service-icon"><i class="devicon-figma-plain"></i></div>
-                <h3 class="service-title">UI/UX Design</h3>
-                <p class="service-desc">Crafting beautiful, intuitive, and user-centric designs with Figma to ensure a seamless experience across all devices.</p>
+                <h3 class="service-title">UI/UX & Game Art</h3>
+                <p class="service-desc">Crafting beautiful, intuitive designs and game art to ensure a seamless and engaging user experience.</p>
               </div>
               <div class="service-card glass-bento">
-                <div class="service-icon"><i class="fa fa-bolt"></i></div>
-                <h3 class="service-title">Performance Optimization</h3>
-                <p class="service-desc">Tuning websites for maximum speed, accessibility, and SEO, delivering a flawless experience for end-users.</p>
+                <div class="service-icon"><i class="devicon-postgresql-plain"></i></div>
+                <h3 class="service-title">Database Management</h3>
+                <p class="service-desc">Designing and managing scalable database architecture using PostgreSQL, MySQL, and Supabase for robust backend solutions.</p>
               </div>
             </div>
           </div>
@@ -168,7 +183,7 @@
         <section class="projects" id="jobs-history">
           <div class="container">
             <h2 class="section-title">Featured Work</h2>
-            <div class="project-filters" data-aos="fade-up" style="display: flex; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
+            <div class="project-filters" data-aos="fade-up" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
               <button class="filter-btn active" data-filter="all">All</button>
               <button class="filter-btn" data-filter="app">App</button>
               <button class="filter-btn" data-filter="web">Web</button>
@@ -177,6 +192,9 @@
               <button class="filter-btn" data-filter="learn">Learn</button>
             </div>
             <div class="projects-grid" id="projects-container">
+            </div>
+            <div id="show-more-container" style="display: none; text-align: center; margin-top: 3rem;">
+              <button id="show-more-btn" class="bento-text-link" style="margin: 0 auto; padding: 0.75rem 2rem; border-radius: 100px; font-weight: 600; cursor: pointer; color: #0f172a; background: #ffffff; border: 1px solid #e2e8f0; transition: all 0.3s ease;">Show More</button>
             </div>
           </div>
         </section>

@@ -544,6 +544,18 @@ img {
   gap: 3rem 4rem;
 }
 
+.sponsor-grid-sm {
+  gap: 1.5rem 2rem;
+}
+
+.sponsor-grid-sm .sponsor-logo i {
+  font-size: 2.2rem;
+}
+
+.sponsor-grid-sm .sponsor-logo span {
+  font-size: 0.65rem;
+}
+
 .sponsor-logo {
   display: flex;
   flex-direction: column;
@@ -590,6 +602,15 @@ img {
 .sponsor-logo:hover i.devicon-postgresql-plain { color: #336791; }
 .sponsor-logo:hover i.devicon-mysql-plain { color: #4479A1; }
 .sponsor-logo:hover i.devicon-vercel-original { color: #000000; }
+.sponsor-logo:hover i.devicon-php-plain { color: #777BB4; }
+.sponsor-logo:hover i.devicon-java-plain { color: #007396; }
+.sponsor-logo:hover i.devicon-sass-original { color: #CC6699; }
+.sponsor-logo:hover i.devicon-nodejs-plain { color: #339933; }
+.sponsor-logo:hover i.devicon-typescript-plain { color: #3178C6; }
+.sponsor-logo:hover i.devicon-python-plain { color: #3776AB; }
+.sponsor-logo:hover i.devicon-nextjs-plain { color: #000000; }
+.sponsor-logo:hover i.devicon-unity-plain { color: #000000; }
+.sponsor-logo:hover i.devicon-blender-original { color: #E87D0D; }
 
 /* Layout grids and sizing */
 .projects-grid {

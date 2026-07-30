@@ -2,7 +2,7 @@ const projectsData = [
   {
     "title": "InsBook",
     "description": "Read, Highlight, and Summarize Anywhere",
-    "subtitle": "bookkeeping and inventory management",
+    "subtitle": "Read, Highlight, and Summarize Anywhere",
     "category": ["web", "project"],
     "image": "https://ik.imagekit.io/rxvi2ripqh/Insbook.jpg",
     "tech": ["React", "TypeScript", "Supabase", "PostgreSQL", "CSS"],
@@ -11,7 +11,7 @@ const projectsData = [
   {
     "title": "AMP",
     "description": "Smart Medical Analysis via Classification Algorithms",
-    "subtitle": "bookkeeping and inventory management",
+    "subtitle": "Smart Medical Analysis via Classification Algorithms",
     "category": ["web", "app", "project"],
     "image": "https://ik.imagekit.io/rxvi2ripqh/AMP.jpg",
     "tech": ["python", "streamlit"],
@@ -36,7 +36,7 @@ const projectsData = [
     "preview": "https://monopoli-eight.vercel.app/"
   },
   {
-    "title": "OPS Diamond",
+    "title": "OPStore",
     "description": "This is a simple web application to help manage business.",
     "subtitle": "bookkeeping and inventory management",
     "category": ["web"],
@@ -47,7 +47,7 @@ const projectsData = [
   {
     "title": "101",
     "description": "This is a simple web application to help manage business.",
-    "subtitle": "bookkeeping and inventory management",
+    "subtitle": "101 mini games in one place",
     "category": ["web", "games", "project"],
     "image": "https://ik.imagekit.io/rxvi2ripqh/ops-diamond.vercel.app_login.png",
     "tech": ["HTML", "JavaScript", "Supabase", "PostgreSQL", "CSS"],

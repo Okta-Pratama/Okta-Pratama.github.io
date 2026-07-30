@@ -141,22 +141,29 @@ document.addEventListener("DOMContentLoaded", () => {
   function initFilters() {
     const filterBtns = document.querySelectorAll(".filter-btn");
     const projectCards = document.querySelectorAll(".project-card");
+    const showMoreContainer = document.getElementById("show-more-container");
+    const showMoreBtn = document.getElementById("show-more-btn");
+    let maxVisible = 6;
+    let currentFilter = "all";
 
-    filterBtns.forEach(btn => {
-      btn.addEventListener("click", () => {
-        filterBtns.forEach(b => b.classList.remove("active"));
-        btn.classList.add("active");
-        const filterValue = btn.getAttribute("data-filter");
+    function applyFilter() {
+      let visibleCount = 0;
+      let totalMatch = 0;
 
-        projectCards.forEach(card => {
-          card.style.transition = "all 0.3s ease";
-          const cardCategories = card.getAttribute("data-category").split(" ");
-          if (filterValue === "all" || cardCategories.includes(filterValue)) {
+      projectCards.forEach(card => {
+        card.style.transition = "all 0.3s ease";
+        const cardCategories = card.getAttribute("data-category").split(" ");
+        const isMatch = currentFilter === "all" || cardCategories.includes(currentFilter);
+        
+        if (isMatch) {
+          totalMatch++;
+          if (visibleCount < maxVisible) {
             card.style.display = "block";
             setTimeout(() => {
               card.style.opacity = "1";
               card.style.transform = "scale(1)";
             }, 50);
+            visibleCount++;
           } else {
             card.style.opacity = "0";
             card.style.transform = "scale(0.8)";
@@ -164,9 +171,46 @@ document.addEventListener("DOMContentLoaded", () => {
               card.style.display = "none";
             }, 300);
           }
-        });
+        } else {
+          card.style.opacity = "0";
+          card.style.transform = "scale(0.8)";
+          setTimeout(() => {
+            card.style.display = "none";
+          }, 300);
+        }
+      });
+
+      if (totalMatch > maxVisible) {
+        if(showMoreContainer) showMoreContainer.style.display = "block";
+      } else {
+        if(showMoreContainer) showMoreContainer.style.display = "none";
+      }
+      
+      setTimeout(() => {
+        if (typeof AOS !== 'undefined') {
+          AOS.refresh();
+        }
+      }, 350);
+    }
+
+    if (showMoreBtn) {
+      showMoreBtn.addEventListener("click", () => {
+        maxVisible = Infinity;
+        applyFilter();
+      });
+    }
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener("click", () => {
+        filterBtns.forEach(b => b.classList.remove("active"));
+        btn.classList.add("active");
+        currentFilter = btn.getAttribute("data-filter");
+        maxVisible = 6;
+        applyFilter();
       });
     });
+
+    applyFilter();
   }
 
   // Init Particles.js
