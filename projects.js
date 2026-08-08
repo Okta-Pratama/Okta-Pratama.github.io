@@ -45,12 +45,21 @@ const projectsData = [
     "preview": "https://diamondgroup-store.vercel.app/"
   },
   {
+    "title": "Command Protocol",
+    "description": "Cooming Soon Project.",
+    "subtitle": "2D Game with Command Protocol Mechanics, ",
+    "category": [ "games", "project"],
+    "image": "",
+    "tech": ["Goodot"],
+    "preview": "unavailable.html"
+  },
+  {
     "title": "101",
-    "description": "This is a simple web application to help manage business.",
+    "description": "Cooming Soon Project.",
     "subtitle": "101 mini games in one place",
     "category": ["web", "games", "project"],
-    "image": "https://ik.imagekit.io/rxvi2ripqh/ops-diamond.vercel.app_login.png",
+    "image": "",
     "tech": ["HTML", "JavaScript", "Supabase", "PostgreSQL", "CSS"],
-    "preview": "#"
+    "preview": "unavailable.html"
   },
 ]
