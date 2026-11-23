@@ -6,7 +6,45 @@ function isSet(value) {
   return v !== "" && v !== "#" && v !== "unavailable.html" && !/^TODO/i.test(v);
 }
 
+const config = typeof siteConfig !== "undefined" ? siteConfig : {};
+
+// Builds the href for a config key, or returns null when the value is not set.
+function configHref(key) {
+  const value = config[key];
+  if (!isSet(value)) return null;
+  switch (key) {
+    case "email": return `mailto:${value}`;
+    case "whatsapp": {
+      const digits = value.replace(/\D/g, "");
+      return digits ? `https://wa.me/${digits}` : null;
+    }
+    default: return value;
+  }
+}
+
+// Fill text from config:   <span data-config-text="location">fallback</span>
+// Wire links from config:  <a data-config-link="github" hidden>…</a>
+// Links stay hidden when their config value is empty or a TODO.
+function applyConfig() {
+  document.querySelectorAll("[data-config-text]").forEach(el => {
+    const value = config[el.getAttribute("data-config-text")];
+    if (isSet(value)) el.textContent = value;
+  });
+
+  document.querySelectorAll("[data-config-link]").forEach(el => {
+    const href = configHref(el.getAttribute("data-config-link"));
+    if (href) {
+      el.href = href;
+      el.hidden = false;
+    } else {
+      el.hidden = true;
+    }
+  });
+}
+
 document.addEventListener("DOMContentLoaded", () => {
+  applyConfig();
+
   function update_time() {
     const now = new Date();
     const hours = String(now.getHours()).padStart(2, "0");

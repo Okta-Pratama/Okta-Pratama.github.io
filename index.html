@@ -215,11 +215,12 @@
               <a href="mailto:oktxip@gmail.com" class="footer-pill" onclick="navigator.clipboard.writeText('oktxip@gmail.com'); alert('Email address copied to clipboard: oktxip@gmail.com');">
                 <i class="fa fa-envelope"></i> Email Me
               </a>
-              <a href="https://github.com/Okta-Pratama" target="_blank" rel="noopener noreferrer" class="footer-pill">
-                <i class="fa fa-github"></i> GitHub
+              <!-- URLs come from config.js; a button stays hidden until its URL is set -->
+              <a data-config-link="github" hidden target="_blank" rel="noopener noreferrer" class="footer-pill">
+                <i class="fa fa-github" aria-hidden="true"></i> GitHub
               </a>
-              <a href="unavailable.html" class="footer-pill">
-                <i class="fa fa-linkedin"></i> LinkedIn
+              <a data-config-link="linkedin" hidden target="_blank" rel="noopener noreferrer" class="footer-pill">
+                <i class="fa fa-linkedin" aria-hidden="true"></i> LinkedIn
               </a>
             </div>
           </div>
@@ -234,6 +235,7 @@
       <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 
+      <script src="config.js"></script>
       <script src="projects.js"></script>
       <script src="script.js"></script>
     </body>
