@@ -59,15 +59,29 @@ document.addEventListener("DOMContentLoaded", () => {
     greetingTrack.classList.add("is-animated");
   }
 
-  function update_time() {
-    const now = new Date();
-    const hours = String(now.getHours()).padStart(2, "0");
-    const minutes = String(now.getMinutes()).padStart(2, "0");
-    const seconds = String(now.getSeconds()).padStart(2, "0");
-    document.getElementById("time").textContent = `${hours}:${minutes}:${seconds}`;
+  // Local clock in MY timezone (not the visitor's), e.g. "14:05 WIB (GMT+7)".
+  // The element is hidden in the HTML, so nothing shows if JavaScript is off.
+  const timeEl = document.getElementById("time");
+  if (timeEl) {
+    try {
+      const formatter = new Intl.DateTimeFormat("en-GB", {
+        timeZone: config.timezone || "Asia/Jakarta",
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false
+      });
+      const label = isSet(config.timezoneLabel) ? ` ${config.timezoneLabel}` : "";
+      const updateTime = () => {
+        timeEl.textContent = `${formatter.format(new Date())}${label}`;
+      };
+      updateTime();
+      timeEl.hidden = false;
+      timeEl.setAttribute("title", "My local time");
+      setInterval(updateTime, 15000);
+    } catch (err) {
+      timeEl.hidden = true;
+    }
   }
-  update_time();
-  setInterval(update_time, 1000);
   const hamburger = document.getElementById("hamburger");
   const listMenu = document.getElementById("list-menu");
   // Mobile menu toggle
