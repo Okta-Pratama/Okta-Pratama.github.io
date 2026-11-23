@@ -32,14 +32,34 @@ function applyConfig() {
   });
 
   document.querySelectorAll("[data-config-link]").forEach(el => {
-    const href = configHref(el.getAttribute("data-config-link"));
-    if (href) {
-      el.href = href;
-      el.hidden = false;
-    } else {
+    const key = el.getAttribute("data-config-link");
+    const href = configHref(key);
+    if (!href) {
       el.hidden = true;
+      return;
+    }
+    el.href = href;
+    if (key === "cvUrl") {
+      // Only show "Download CV" once the PDF actually exists in the repo
+      fetch(href, { method: "HEAD" })
+        .then(res => { el.hidden = !res.ok; })
+        .catch(() => { el.hidden = true; });
+    } else {
+      el.hidden = false;
     }
   });
+
+  // "Email Me" also copies the address, for visitors without a mail app
+  const emailLink = document.querySelector('[data-config-link="email"]');
+  if (emailLink && isSet(config.email)) {
+    emailLink.addEventListener("click", () => {
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(config.email)
+          .then(() => alert(`Email address copied to clipboard: ${config.email}`))
+          .catch(() => {});
+      }
+    });
+  }
 }
 
 document.addEventListener("DOMContentLoaded", () => {

@@ -113,6 +113,10 @@
                 <span class="sep hide-mobile">•</span>
                 <span class="location-sm block-mobile" data-config-text="location">Probolinggo, Indonesia</span>
               </div>
+              <p class="availability">
+                <span class="status-dot" aria-hidden="true"></span>
+                <span data-config-text="availability">Available for remote part-time &amp; freelance work</span>
+              </p>
 
             </div>
           </div>
@@ -211,8 +215,14 @@
             
 
             <div class="footer-links">
-              <a href="mailto:oktxip@gmail.com" class="footer-pill" onclick="navigator.clipboard.writeText('oktxip@gmail.com'); alert('Email address copied to clipboard: oktxip@gmail.com');">
-                <i class="fa fa-envelope"></i> Email Me
+              <a href="mailto:oktxip@gmail.com" data-config-link="email" class="footer-pill">
+                <i class="fa fa-envelope" aria-hidden="true"></i> Email Me
+              </a>
+              <a data-config-link="whatsapp" hidden target="_blank" rel="noopener noreferrer" class="footer-pill">
+                <i class="fa fa-whatsapp" aria-hidden="true"></i> WhatsApp
+              </a>
+              <a data-config-link="cvUrl" hidden download class="footer-pill">
+                <i class="fa fa-download" aria-hidden="true"></i> Download CV
               </a>
               <!-- URLs come from config.js; a button stays hidden until its URL is set -->
               <a data-config-link="github" hidden target="_blank" rel="noopener noreferrer" class="footer-pill">

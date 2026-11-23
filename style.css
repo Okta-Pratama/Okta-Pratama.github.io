@@ -415,6 +415,33 @@ img {
   color: var(--muted)
 }
 
+/* Availability status line in the hero */
+.availability {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 1.25rem 0 0;
+  padding: 0.4rem 1rem;
+  border-radius: 100px;
+  border: 1px solid rgba(15, 23, 42, 0.12);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+[data-theme="dark"] .availability {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
+  flex-shrink: 0;
+}
+
 /* Theme toggle */
 /* header/nav interactions */
 .list-menu .menu {
