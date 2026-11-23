@@ -210,10 +210,14 @@ img {
 
 .hamburger {
   display: none;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  padding: .4rem
+  padding: .4rem;
+  background: transparent;
+  border: 0;
+  border-radius: 8px
 }
 
 .hamburger .bar {
@@ -227,7 +231,7 @@ img {
 }
 
 .hamburger.active .bar:nth-child(1) {
-  transform: translateY(6px) rotate(45deg)
+  transform: translateY(8px) rotate(45deg)
 }
 
 .hamburger.active .bar:nth-child(2) {
@@ -235,7 +239,7 @@ img {
 }
 
 .hamburger.active .bar:nth-child(3) {
-  transform: translateY(-6px) rotate(-45deg)
+  transform: translateY(-8px) rotate(-45deg)
 }
 
 /* Hero */
@@ -427,6 +431,7 @@ img {
   font-size: 0.85rem;
   font-weight: 600;
   color: var(--text);
+  text-align: left;
 }
 
 [data-theme="dark"] .availability {
@@ -448,8 +453,7 @@ img {
   transition: color .18s ease, transform .18s ease, box-shadow .18s
 }
 
-.list-menu .menu:focus {
-  outline: none;
+.list-menu .menu:focus-visible {
   box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
   transform: translateY(-2px);
 }
@@ -669,28 +673,32 @@ img {
   align-items: center;
   justify-content: center;
   gap: 0.75rem;
-  opacity: 0.4;
   filter: grayscale(100%);
   transition: all 0.4s ease;
   cursor: default;
 }
 
+/* Only the icon is faded; the label keeps full opacity for WCAG AA contrast */
 .sponsor-logo i {
   font-size: 3.5rem;
   color: var(--text);
-  transition: color 0.4s ease;
+  opacity: 0.4;
+  transition: color 0.4s ease, opacity 0.4s ease;
+}
+
+.sponsor-logo:hover i {
+  opacity: 1;
 }
 
 .sponsor-logo span {
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--text);
+  color: var(--muted);
   text-transform: uppercase;
   letter-spacing: 1px;
 }
 
 .sponsor-logo:hover {
-  opacity: 1;
   filter: grayscale(0%);
   transform: scale(1.1);
 }
@@ -1102,6 +1110,11 @@ section {
     display: none
   }
 
+  /* The hamburger was never shown, leaving mobile without navigation */
+  .hamburger {
+    display: flex
+  }
+
   .job {
     grid-template-columns: 1fr
   }
@@ -1227,8 +1240,8 @@ section {
     padding: 0.6rem 0.85rem;
   }
 
-  .project-figure img {
-    height: 220px;
+  .project-figure {
+    min-height: 220px;
   }
 
   .project-body {
@@ -1240,7 +1253,12 @@ section {
 .list-menu.active {
   display: flex;
   position: fixed;
-  inset: 64px 0 0 0;
+  /* .site-header uses backdrop-filter, which makes it the containing block for
+     fixed children, so anchor the panel to the header's bottom edge */
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: calc(100vh - 64px);
   background: var(--bg);
   padding: 1.5rem;
   flex-direction: column;
@@ -1253,4 +1271,74 @@ section {
   font-size: 1.1rem;
   padding: .75rem 0;
   color: var(--text)
+}
+/* ---------- Accessibility ---------- */
+
+/* Visible keyboard focus for every interactive element */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+.project-btn:focus-visible {
+  outline-color: #ffffff;
+}
+
+/* Respect the visitor's reduced-motion setting */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .greeting-track {
+    animation: none !important;
+  }
+
+  #particles-js {
+    display: none;
+  }
+}
+
+/* Keep section headings clear of the sticky header after menu navigation */
+section[id],
+footer[id] {
+  scroll-margin-top: 72px;
+}
+
+/* Image and text share one grid cell, so a card grows with its text instead of
+   clipping the title when the description and buttons need more room */
+.project-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.project-card > .project-figure,
+.project-card > .project-body {
+  grid-area: 1 / 1;
+}
+
+.project-card > .project-body {
+  position: relative;
+  inset: auto;
+}
+
+/* Stronger scrim behind card text so it stays readable (WCAG AA) on bright screenshots */
+.project-card > .project-body {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.78) 55%, rgba(0, 0, 0, 0.45) 100%);
+}
+
+.project-card:hover > .project-body {
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.85) 55%, rgba(0, 0, 0, 0.55) 100%);
 }

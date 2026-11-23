@@ -122,7 +122,15 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   document.addEventListener('click', (e) => {
-    if (!hamburger.contains(e.target) && !listMenu.contains(e.target)) closeMenu();
+    if (hamburger && listMenu && !hamburger.contains(e.target) && !listMenu.contains(e.target)) closeMenu();
+  });
+
+  // Close the mobile menu with Escape and return focus to the toggle
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && listMenu && listMenu.classList.contains('active')) {
+      closeMenu();
+      hamburger && hamburger.focus();
+    }
   });
 
   // Smooth scroll + close mobile menu on link click
@@ -131,7 +139,7 @@ document.addEventListener("DOMContentLoaded", () => {
     link.addEventListener('click', (e) => {
       e.preventDefault();
       const target = document.querySelector(link.getAttribute('href'));
-      if (target) target.scrollIntoView({behavior:'smooth'});
+      if (target) target.scrollIntoView({behavior: prefersReducedMotion ? 'auto' : 'smooth'});
       closeMenu();
     });
   });
@@ -174,6 +182,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (savedTheme === "dark") {
     htmlEl.setAttribute("data-theme", "dark");
     if(themeIcon) themeIcon.classList.replace("fa-moon-o", "fa-sun-o");
+    if(themeToggle) themeToggle.setAttribute("aria-pressed", "true");
   }
 
   themeToggle && themeToggle.addEventListener("click", () => {
@@ -182,10 +191,12 @@ document.addEventListener("DOMContentLoaded", () => {
       htmlEl.removeAttribute("data-theme");
       localStorage.setItem("theme", "light");
       if(themeIcon) themeIcon.classList.replace("fa-sun-o", "fa-moon-o");
+      themeToggle.setAttribute("aria-pressed", "false");
     } else {
       htmlEl.setAttribute("data-theme", "dark");
       localStorage.setItem("theme", "dark");
       if(themeIcon) themeIcon.classList.replace("fa-moon-o", "fa-sun-o");
+      themeToggle.setAttribute("aria-pressed", "true");
     }
   });
 
@@ -323,8 +334,8 @@ document.addEventListener("DOMContentLoaded", () => {
     applyFilter();
   }
 
-  // Init Particles.js
-  if (typeof particlesJS !== 'undefined') {
+  // Init Particles.js (skipped when the visitor prefers reduced motion)
+  if (typeof particlesJS !== 'undefined' && !prefersReducedMotion) {
     particlesJS('particles-js', {
       "particles": {
         "number": { "value": 40, "density": { "enable": true, "value_area": 800 } },
@@ -366,4 +377,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
  
-AOS && AOS.init && AOS.init({ once: true });
+if (typeof AOS !== "undefined") {
+  // disable: AOS removes its hidden starting state, so content is visible without animation
+  AOS.init({ once: true, disable: () => window.matchMedia("(prefers-reduced-motion: reduce)").matches });
+}
