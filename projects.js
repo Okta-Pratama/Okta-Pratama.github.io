@@ -8,7 +8,9 @@
  *   category     Array of filter tags: "web", "app", "games", "project", "learn"
  *                (a filter tab is hidden automatically when no project uses it)
  *   tech         Array of technologies
- *   image        Screenshot URL (16:9 works best). Leave "" to show a placeholder.
+ *   image        Optional fallback image. Cards automatically use a screenshot of
+ *                liveUrl (see autoScreenshot in config.js); this image is used when
+ *                there is no liveUrl or the screenshot fails.
  *   liveUrl      Live demo URL. Leave "" (or "TODO") to hide the "Live Demo" button.
  *   repoUrl      Source code URL. Leave "" (or "TODO") to hide the "Source Code" button.
  */

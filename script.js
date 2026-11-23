@@ -216,6 +216,21 @@ document.addEventListener("DOMContentLoaded", () => {
     return el;
   }
 
+  // Project card image:
+  //   config.autoScreenshot = true  -> screenshot of liveUrl first, own "image" as fallback
+  //   config.autoScreenshot = false -> own "image" first, screenshot only when "image" is empty
+  //   nothing available             -> "Preview coming soon" placeholder
+  // Screenshots come from WordPress mShots (free, no API key). The first request for a
+  // new URL can take up to a minute; after that mShots serves a cached screenshot.
+  function projectImageSources(proj) {
+    const shot = isSet(proj.liveUrl) && /^https?:\/\//i.test(proj.liveUrl)
+      ? `https://s.wordpress.com/mshots/v1/${encodeURIComponent(proj.liveUrl)}?w=1280&h=720`
+      : null;
+    const own = isSet(proj.image) ? proj.image : null;
+    const ordered = config.autoScreenshot === false ? [own, shot] : [shot, own];
+    return ordered.filter(Boolean);
+  }
+
   function createProjectCard(proj) {
     const categories = Array.isArray(proj.category) ? proj.category : [proj.category];
 
@@ -225,18 +240,44 @@ document.addEventListener("DOMContentLoaded", () => {
     card.setAttribute("data-category", categories.join(" ").toLowerCase());
 
     const figure = createEl("figure", "project-figure");
-    if (isSet(proj.image)) {
+    const showPlaceholder = () => {
+      figure.textContent = "";
+      figure.classList.add("project-figure--empty");
+      figure.appendChild(createEl("span", "project-placeholder", "Preview coming soon"));
+    };
+
+    const sources = projectImageSources(proj);
+    if (sources.length) {
       const img = document.createElement("img");
-      img.src = proj.image;
+      img.src = sources.shift();
       img.alt = `Screenshot of ${proj.title}`;
       img.loading = "lazy";
       img.decoding = "async";
       img.width = 1600;
       img.height = 900;
+      // mShots answers with a 400x300 "generating" image until the screenshot is
+      // ready, so retry a few times before giving up on it
+      let retries = 0;
+      img.addEventListener("load", () => {
+        const generating = img.src.includes("s.wordpress.com/mshots/") &&
+          img.naturalWidth === 400 && img.naturalHeight === 300;
+        if (!generating) return;
+        if (retries < 6) {
+          retries++;
+          setTimeout(() => {
+            img.src = img.src.replace(/&retry=\d+$/, "") + `&retry=${retries}`;
+          }, 5000);
+        } else if (sources.length) {
+          img.src = sources.shift();
+        }
+      });
+      img.addEventListener("error", () => {
+        if (sources.length) img.src = sources.shift();
+        else showPlaceholder();
+      });
       figure.appendChild(img);
     } else {
-      figure.classList.add("project-figure--empty");
-      figure.appendChild(createEl("span", "project-placeholder", "Preview coming soon"));
+      showPlaceholder();
     }
     card.appendChild(figure);
 
