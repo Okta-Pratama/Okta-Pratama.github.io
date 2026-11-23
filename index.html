@@ -96,13 +96,12 @@
         <section class="hero-section" id="hero">
           <div id="particles-js" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0;"></div>
           <div class="greeting-wrap" data-aos="fade-in" data-aos-duration="1000" style="position: relative; z-index: 1;">
-            <!-- Visible marquee (decorative) -->
-            <div class="greeting-track" aria-hidden="true">
-              <span class="greeting-item">Hello — I'm <span class="accent">Okta Pratama</span></span>
-              <span class="greeting-item">Hello — I'm <span class="accent">Okta Pratama</span></span>
+            <!-- The single <h1> is the first marquee item. script.js appends a decorative
+                 aria-hidden copy for the seamless loop, so the raw HTML (what Google reads)
+                 contains the greeting only once. -->
+            <div class="greeting-track" id="greeting-track">
+              <h1 class="greeting-item">Hello — I'm <span class="accent">Okta Pratama</span></h1>
             </div>
-            <!-- Accessible heading for screen readers -->
-            <h1 class="greeting-sr">Hello — I'm <span class="accent">Okta Pratama</span></h1>
           </div>
           <div class="container container-hero" style="position: relative; z-index: 1;">
             <div class="hero-left" data-aos="fade-up" data-aos-duration="700" data-aos-delay="200">

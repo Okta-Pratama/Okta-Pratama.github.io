@@ -45,6 +45,20 @@ function applyConfig() {
 document.addEventListener("DOMContentLoaded", () => {
   applyConfig();
 
+  // Greeting marquee: add one decorative copy of the <h1> for a seamless loop.
+  // Skipped when the visitor prefers reduced motion (the heading is then static).
+  const greetingTrack = document.getElementById("greeting-track");
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (greetingTrack && !prefersReducedMotion) {
+    const heading = greetingTrack.querySelector("h1");
+    const copy = document.createElement("span");
+    copy.className = "greeting-item";
+    copy.setAttribute("aria-hidden", "true");
+    copy.innerHTML = heading.innerHTML;
+    greetingTrack.appendChild(copy);
+    greetingTrack.classList.add("is-animated");
+  }
+
   function update_time() {
     const now = new Date();
     const hours = String(now.getHours()).padStart(2, "0");

@@ -289,12 +289,30 @@ img {
   align-items: center;
   gap: 6rem;
   min-width: 220%;
-  animation: marquee var(--marquee-duration, 14s) linear infinite;
   user-select: none;
   pointer-events: none;
 }
 
+.greeting-track.is-animated {
+  animation: marquee var(--marquee-duration, 14s) linear infinite;
+}
+
+/* Static heading when the marquee is off (no JS or reduced motion) */
+.greeting-track:not(.is-animated) {
+  display: block;
+  min-width: 0;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+.greeting-track:not(.is-animated) .greeting-item {
+  white-space: normal;
+  font-size: clamp(40px, 9vw, 120px);
+}
+
 .greeting-item {
+  margin: 0;
+  color: var(--text);
   white-space: nowrap;
   font-weight: 900;
   line-height: 0.9;
