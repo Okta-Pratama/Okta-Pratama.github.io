@@ -53,6 +53,7 @@ const projectsData = [
     "liveUrl": "https://monopoli-eight.vercel.app/",
     "repoUrl": "TODO: https://github.com/Okta-Pratama/..."
   },
+  
   {
     "title": "OPStore",
     "subtitle": "Bookkeeping and Inventory Management",

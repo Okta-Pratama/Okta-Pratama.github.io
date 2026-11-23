@@ -1124,6 +1124,7 @@ section {
   }
 }
 
+
 /* Dark Mode Overrides */
 [data-theme="dark"] .site-header {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
@@ -1131,7 +1132,7 @@ section {
 [data-theme="dark"] .footer-modern {
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
-
+ 
 /* Custom Features */
 .theme-toggle {
   background: transparent;
