@@ -1,65 +1,86 @@
+/*
+ * Project list — edit this file to add, remove, or update projects.
+ *
+ * Fields:
+ *   title        Project name
+ *   subtitle     Short tagline shown above the description (optional)
+ *   description  1–2 sentences about the project
+ *   category     Array of filter tags: "web", "app", "games", "project", "learn"
+ *                (a filter tab is hidden automatically when no project uses it)
+ *   tech         Array of technologies
+ *   image        Screenshot URL (16:9 works best). Leave "" to show a placeholder.
+ *   liveUrl      Live demo URL. Leave "" (or "TODO") to hide the "Live Demo" button.
+ *   repoUrl      Source code URL. Leave "" (or "TODO") to hide the "Source Code" button.
+ */
 const projectsData = [
   {
     "title": "InsBook",
-    "description": "Read, Highlight, and Summarize Anywhere",
     "subtitle": "Read, Highlight, and Summarize Anywhere",
+    "description": "TODO: describe InsBook in 1–2 sentences (what it does and who it is for).",
     "category": ["web", "project"],
     "image": "https://ik.imagekit.io/rxvi2ripqh/Insbook.jpg",
     "tech": ["React", "TypeScript", "Supabase", "PostgreSQL", "CSS"],
-    "preview": "https://insbook.vercel.app/"
+    "liveUrl": "https://insbook.vercel.app/",
+    "repoUrl": "TODO: https://github.com/Okta-Pratama/..."
   },
   {
     "title": "AMP",
-    "description": "Smart Medical Analysis via Classification Algorithms",
     "subtitle": "Smart Medical Analysis via Classification Algorithms",
+    "description": "TODO: describe AMP in 1–2 sentences (what it predicts and how).",
     "category": ["web", "app", "project"],
     "image": "https://ik.imagekit.io/rxvi2ripqh/AMP.jpg",
-    "tech": ["python", "streamlit"],
-    "preview": "https://amp-heart.streamlit.app/"
+    "tech": ["Python", "Streamlit"],
+    "liveUrl": "https://amp-heart.streamlit.app/",
+    "repoUrl": "TODO: https://github.com/Okta-Pratama/..."
   },
   {
     "title": "K3 SR",
-    "description": "This a school project that I made to learn web development.",
-    "subtitle": "SAFETY & COMPLIANCE",
+    "subtitle": "Safety & Compliance",
+    "description": "A school project I built to learn web development.",
     "category": ["web", "learn"],
     "image": "https://ik.imagekit.io/rxvi2ripqh/192.168.100.7_3000_index.html.png",
-    "tech": ["HTML",, "JavaScript", "WebPack", "Bootstrap", "Sass"],
-    "preview": "https://k3-sumber-rezeky.vercel.app"
+    "tech": ["HTML", "JavaScript", "Webpack", "Bootstrap", "Sass"],
+    "liveUrl": "https://k3-sumber-rezeky.vercel.app",
+    "repoUrl": "TODO: https://github.com/Okta-Pratama/..."
   },
   {
     "title": "Monika Eight",
-    "description": "This is a game based on a rather unusual request from my client.",
     "subtitle": "Simple Game with Statistics Questions",
+    "description": "A game built for a client's rather unusual request.",
     "category": ["games", "web"],
     "image": "https://ik.imagekit.io/rxvi2ripqh/moeg.jpg",
     "tech": ["HTML", "CSS", "JavaScript", "Bootstrap", "PHP"],
-    "preview": "https://monopoli-eight.vercel.app/"
+    "liveUrl": "https://monopoli-eight.vercel.app/",
+    "repoUrl": "TODO: https://github.com/Okta-Pratama/..."
   },
   {
     "title": "OPStore",
-    "description": "This is a simple web application to help manage business.",
-    "subtitle": "bookkeeping and inventory management",
+    "subtitle": "Bookkeeping and Inventory Management",
+    "description": "A simple web application to help manage a business.",
     "category": ["web"],
     "image": "https://ik.imagekit.io/rxvi2ripqh/ops-diamond.vercel.app_login.png",
     "tech": ["HTML", "JavaScript", "Supabase", "PostgreSQL", "CSS"],
-    "preview": "https://diamondgroup-store.vercel.app/"
+    "liveUrl": "https://diamondgroup-store.vercel.app/",
+    "repoUrl": "TODO: https://github.com/Okta-Pratama/..."
   },
   {
     "title": "Command Protocol",
-    "description": "Cooming Soon Project.",
-    "subtitle": "2D Game with Command Protocol Mechanics, ",
-    "category": [ "games", "project"],
+    "subtitle": "2D Game with Command Protocol Mechanics",
+    "description": "Coming soon.",
+    "category": ["games", "project"],
     "image": "",
-    "tech": ["Goodot"],
-    "preview": "unavailable.html"
+    "tech": ["Godot"],
+    "liveUrl": "",
+    "repoUrl": ""
   },
   {
     "title": "101",
-    "description": "Cooming Soon Project.",
-    "subtitle": "101 mini games in one place",
+    "subtitle": "101 Mini Games in One Place",
+    "description": "Coming soon.",
     "category": ["web", "games", "project"],
     "image": "",
     "tech": ["HTML", "JavaScript", "Supabase", "PostgreSQL", "CSS"],
-    "preview": "unavailable.html"
-  },
-]
+    "liveUrl": "",
+    "repoUrl": ""
+  }
+];

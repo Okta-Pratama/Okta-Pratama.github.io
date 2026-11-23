@@ -183,18 +183,20 @@
         <section class="projects" id="jobs-history">
           <div class="container">
             <h2 class="section-title">Featured Work</h2>
-            <div class="project-filters" data-aos="fade-up" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
-              <button class="filter-btn active" data-filter="all">All</button>
-              <button class="filter-btn" data-filter="app">App</button>
-              <button class="filter-btn" data-filter="web">Web</button>
-              <button class="filter-btn" data-filter="games">Games</button>
-              <button class="filter-btn" data-filter="project">Project</button>
-              <button class="filter-btn" data-filter="learn">Learn</button>
+            <div class="project-filters" role="group" aria-label="Filter projects by category" data-aos="fade-up" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2rem;">
+              <button type="button" class="filter-btn active" data-filter="all" aria-pressed="true">All</button>
+              <button type="button" class="filter-btn" data-filter="app" aria-pressed="false">App</button>
+              <button type="button" class="filter-btn" data-filter="web" aria-pressed="false">Web</button>
+              <button type="button" class="filter-btn" data-filter="games" aria-pressed="false">Games</button>
+              <button type="button" class="filter-btn" data-filter="project" aria-pressed="false">Project</button>
+              <button type="button" class="filter-btn" data-filter="learn" aria-pressed="false">Learn</button>
             </div>
             <div class="projects-grid" id="projects-container">
+              <!-- Cards are generated from projects.js -->
             </div>
-            <div id="show-more-container" style="display: none; text-align: center; margin-top: 3rem;">
-              <button id="show-more-btn" class="bento-text-link" style="margin: 0 auto; padding: 0.75rem 2rem; border-radius: 100px; font-weight: 600; cursor: pointer; color: #0f172a; background: #ffffff; border: 1px solid #e2e8f0; transition: all 0.3s ease;">Show More</button>
+            <noscript><p class="lead">Please enable JavaScript to see my projects, or visit my GitHub profile.</p></noscript>
+            <div id="show-more-container" hidden style="text-align: center; margin-top: 3rem;">
+              <button type="button" id="show-more-btn" class="bento-text-link" style="margin: 0 auto; padding: 0.75rem 2rem; border-radius: 100px; font-weight: 600; cursor: pointer; color: #0f172a; background: #ffffff; border: 1px solid #e2e8f0; transition: all 0.3s ease;">Show More</button>
             </div>
           </div>
         </section>

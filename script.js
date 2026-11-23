@@ -1,3 +1,11 @@
+// A value counts as "set" when it is a non-empty string that is not a TODO placeholder
+// (or a leftover "#" / "unavailable.html" stand-in link).
+function isSet(value) {
+  if (typeof value !== "string") return false;
+  const v = value.trim();
+  return v !== "" && v !== "#" && v !== "unavailable.html" && !/^TODO/i.test(v);
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   function update_time() {
     const now = new Date();
@@ -94,103 +102,111 @@ document.addEventListener("DOMContentLoaded", () => {
   // Load Projects from projects.js data
   const projectsContainer = document.getElementById("projects-container");
   if (projectsContainer && typeof projectsData !== 'undefined') {
-    projectsData.forEach((proj, index) => {
-      const delay = (index % 3) * 80;
-      const techPills = proj.tech.map(t => `<span class="bento-pill">${t}</span>`).join(" ");
-      
-      const article = document.createElement("a");
-      article.href = proj.preview;
-      if (proj.preview !== "#") {
-        article.target = "_blank";
-        article.rel = "noopener noreferrer";
-      }
-      article.style.textDecoration = "none";
-      article.style.color = "inherit";
-      article.style.cursor = "pointer";
-      article.className = "project-card bento-card";
-      let categoryAttr = "";
-      if (Array.isArray(proj.category)) {
-        categoryAttr = proj.category.join(" ");
-      } else {
-        categoryAttr = proj.category;
-      }
-      article.setAttribute("data-category", categoryAttr);
-      article.setAttribute("data-aos", "zoom-in");
-      article.setAttribute("data-aos-duration", "600");
-      if(delay > 0) article.setAttribute("data-aos-delay", delay);
-
-      article.innerHTML = `
-        <figure class="project-figure">
-          <img src="${proj.image}" alt="${proj.title}">
-        </figure>
-        <div class="project-body">
-          <h3 class="project-title">${proj.title}</h3>
-          <div class="project-subtitle">${proj.subtitle}</div>
-          <div class="project-tech">
-            ${techPills}
-          </div>
-        </div>
-      `;
-      projectsContainer.appendChild(article);
+    projectsData.forEach((proj) => {
+      projectsContainer.appendChild(createProjectCard(proj));
     });
-
     initFilters();
+  }
 
+  function createEl(tag, className, text) {
+    const el = document.createElement(tag);
+    if (className) el.className = className;
+    if (text) el.textContent = text;
+    return el;
+  }
+
+  function createProjectCard(proj) {
+    const categories = Array.isArray(proj.category) ? proj.category : [proj.category];
+
+    // Cards are NOT given data-aos: AOS only tracks elements that exist when it
+    // initialises, so injected cards stayed at opacity 0 forever.
+    const card = createEl("article", "project-card bento-card");
+    card.setAttribute("data-category", categories.join(" ").toLowerCase());
+
+    const figure = createEl("figure", "project-figure");
+    if (isSet(proj.image)) {
+      const img = document.createElement("img");
+      img.src = proj.image;
+      img.alt = `Screenshot of ${proj.title}`;
+      img.loading = "lazy";
+      img.decoding = "async";
+      img.width = 1600;
+      img.height = 900;
+      figure.appendChild(img);
+    } else {
+      figure.classList.add("project-figure--empty");
+      figure.appendChild(createEl("span", "project-placeholder", "Preview coming soon"));
+    }
+    card.appendChild(figure);
+
+    const body = createEl("div", "project-body");
+    body.appendChild(createEl("h3", "project-title", proj.title));
+    if (isSet(proj.subtitle)) body.appendChild(createEl("div", "project-subtitle", proj.subtitle));
+    if (isSet(proj.description)) body.appendChild(createEl("p", "project-desc", proj.description));
+
+    const tech = createEl("div", "project-tech");
+    (proj.tech || []).filter(Boolean).forEach(t => {
+      tech.appendChild(createEl("span", "bento-pill", t));
+      tech.appendChild(document.createTextNode(" "));
+    });
+    body.appendChild(tech);
+
+    const actions = createEl("div", "project-actions");
+    [
+      { url: proj.liveUrl, label: "Live Demo", icon: "fa-external-link" },
+      { url: proj.repoUrl, label: "Source Code", icon: "fa-github" }
+    ].forEach(({ url, label, icon }) => {
+      if (!isSet(url)) return;
+      const a = createEl("a", "project-btn");
+      a.href = url;
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.setAttribute("aria-label", `${label}: ${proj.title} (opens in a new tab)`);
+      const i = createEl("i", `fa ${icon}`);
+      i.setAttribute("aria-hidden", "true");
+      a.append(i, ` ${label}`);
+      actions.appendChild(a);
+    });
+    if (actions.children.length) body.appendChild(actions);
+
+    card.appendChild(body);
+    return card;
   }
 
   function initFilters() {
+    const MAX_VISIBLE = 6;
     const filterBtns = document.querySelectorAll(".filter-btn");
     const projectCards = document.querySelectorAll(".project-card");
     const showMoreContainer = document.getElementById("show-more-container");
     const showMoreBtn = document.getElementById("show-more-btn");
-    let maxVisible = 6;
+    let maxVisible = MAX_VISIBLE;
     let currentFilter = "all";
+
+    const cardMatches = (card, filter) =>
+      filter === "all" || card.getAttribute("data-category").split(" ").includes(filter);
+
+    // Hide filter tabs that have no projects
+    filterBtns.forEach(btn => {
+      const filter = btn.getAttribute("data-filter");
+      const hasProjects = [...projectCards].some(card => cardMatches(card, filter));
+      btn.hidden = !hasProjects;
+    });
 
     function applyFilter() {
       let visibleCount = 0;
       let totalMatch = 0;
 
       projectCards.forEach(card => {
-        card.style.transition = "all 0.3s ease";
-        const cardCategories = card.getAttribute("data-category").split(" ");
-        const isMatch = currentFilter === "all" || cardCategories.includes(currentFilter);
-        
-        if (isMatch) {
+        if (cardMatches(card, currentFilter)) {
           totalMatch++;
-          if (visibleCount < maxVisible) {
-            card.style.display = "block";
-            setTimeout(() => {
-              card.style.opacity = "1";
-              card.style.transform = "scale(1)";
-            }, 50);
-            visibleCount++;
-          } else {
-            card.style.opacity = "0";
-            card.style.transform = "scale(0.8)";
-            setTimeout(() => {
-              card.style.display = "none";
-            }, 300);
-          }
+          card.hidden = visibleCount >= maxVisible;
+          if (!card.hidden) visibleCount++;
         } else {
-          card.style.opacity = "0";
-          card.style.transform = "scale(0.8)";
-          setTimeout(() => {
-            card.style.display = "none";
-          }, 300);
+          card.hidden = true;
         }
       });
 
-      if (totalMatch > maxVisible) {
-        if(showMoreContainer) showMoreContainer.style.display = "block";
-      } else {
-        if(showMoreContainer) showMoreContainer.style.display = "none";
-      }
-      
-      setTimeout(() => {
-        if (typeof AOS !== 'undefined') {
-          AOS.refresh();
-        }
-      }, 350);
+      if (showMoreContainer) showMoreContainer.hidden = totalMatch <= maxVisible;
     }
 
     if (showMoreBtn) {
@@ -202,10 +218,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
     filterBtns.forEach(btn => {
       btn.addEventListener("click", () => {
-        filterBtns.forEach(b => b.classList.remove("active"));
+        filterBtns.forEach(b => {
+          b.classList.remove("active");
+          b.setAttribute("aria-pressed", "false");
+        });
         btn.classList.add("active");
+        btn.setAttribute("aria-pressed", "true");
         currentFilter = btn.getAttribute("data-filter");
-        maxVisible = 6;
+        maxVisible = MAX_VISIBLE;
         applyFilter();
       });
     });
