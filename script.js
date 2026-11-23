@@ -65,6 +65,10 @@ function applyConfig() {
 document.addEventListener("DOMContentLoaded", () => {
   applyConfig();
 
+  // Footer year (HTML holds a fallback year for when JS is off)
+  const yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = String(new Date().getFullYear());
+
   // Greeting marquee: add one decorative copy of the <h1> for a seamless loop.
   // Skipped when the visitor prefers reduced motion (the heading is then static).
   const greetingTrack = document.getElementById("greeting-track");
